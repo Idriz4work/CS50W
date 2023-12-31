@@ -1,0 +1,51 @@
+html {
+    background-color: #F0F8FF;
+    color : #F0F8FF;
+  }
+
+h1 {
+    color: #002147;
+  font-family: Georgia, serif;
+  text-align: center;
+  font-size: 300%;
+}
+p {
+    color: #4C516D;
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 160%;
+}
+#h10 {
+    background-color:#36454F;
+    color: #F0FFFF;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 1;
+    text-align: center;
+}
+#goo{
+    width:10px;
+    height:20px;
+    color:#6495ED;
+    text-align: center;
+    border: 10px;
+}
+
+#g{
+  color:white;
+  background-color:blue;
+  text-align: center;
+  border: 10px;
+
+}
+#t{
+  text-align: right;
+}
+#c{
+  text-align: center;
+}
+.center-div{
+  display: flex;
+  justify-content: center;
+}
