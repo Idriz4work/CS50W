@@ -1,0 +1,16 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1>Create a new page</h1>
+
+    <ul>
+        {% for new in create_news %}
+            <li>{{ entry }}</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
