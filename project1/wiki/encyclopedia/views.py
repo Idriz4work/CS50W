@@ -13,7 +13,7 @@ def index(request):
         "entries": util.list_entries()
     })
     else:
-        return render("encyclopedia/index.html")
+        return render(request,"encyclopedia/index.html")
 
 
 def create_new(request):
@@ -22,7 +22,7 @@ def create_new(request):
         "new_page": util.list_entries()
     })
     else:
-        return render("encyclopedia/create.html")
+        return render(request,"encyclopedia/create.html")
 
 def random(request):
     if request.method == "POST":
@@ -30,4 +30,4 @@ def random(request):
         "random_page": util.list_entries()
     })
     else:
-        return render("encyclopedia/random.html")
+        return render(request,"encyclopedia/random.html")
