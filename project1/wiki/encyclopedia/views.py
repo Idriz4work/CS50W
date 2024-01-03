@@ -13,18 +13,7 @@ def index(request):
         "entries": util.list_entries()
     })
     else:
-        return render("encyclopedia/random.html")
-
-def view(request, ):
-    if request.method == "POST":
-
-        return render("encyclopedia/templates/create.html",{
-            #"new_page": 
-            "save": save_entry(title, content)
-        })
-
-    else:
-        return render("encyclopedia/templates/create.html")
+        return render("encyclopedia/index.html")
 
 
 def create_new(request):
@@ -33,7 +22,7 @@ def create_new(request):
         "new_page": util.list_entries()
     })
     else:
-        return render("encyclopedia/random.html")
+        return render("encyclopedia/create.html")
 
 def random(request):
     if request.method == "POST":
