@@ -18,10 +18,10 @@ def index(request):
 def view(request, ):
     if request.method == "POST":
 
-        return render("encyclopedia/templates/create.html")#,{
+        return render("encyclopedia/templates/create.html",{
             #"new_page": 
-            #"save": save_entry(title, content)
-        #})
+            "save": save_entry(title, content)
+        })
 
     else:
         return render("encyclopedia/templates/create.html")
