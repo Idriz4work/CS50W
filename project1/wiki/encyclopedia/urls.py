@@ -4,7 +4,6 @@ from .util import list_entries
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("", views.entry, name="entry"),
-    path("", views.create_new, name="create"),
-    path("", views.random, name="random")
+    path('create/<str:create_new>/', views.entry, name='create'),
+    path("random", views.random, name="random")
 ]

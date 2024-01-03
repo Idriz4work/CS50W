@@ -6,11 +6,14 @@
 
 {% block body %}
     <h1>Create a new page</h1>
-
-    <ul>
+    {% if request.method = post %}
+        <ul>
         {% for new in create_news %}
-            <li>{{ entry }}</li>
+            <li>{{ save }}</li>
         {% endfor %}
-    </ul>
-
+        </ul>
+            <h1>YES</h1>
+        {% else %}
+            <h1>NO</h1>
+        {% endif %}
 {% endblock %}
