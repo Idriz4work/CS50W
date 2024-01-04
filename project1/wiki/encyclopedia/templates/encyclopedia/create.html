@@ -6,14 +6,22 @@
 
 {% block body %}
     <h1>Create a new page</h1>
+
     {% if request.method == "POST" %}
+        <h2>Successfully created!</h2>
         <ul>
-        {% for new in create_news %}
-            <li>{{ new }}</li>
-        {% endfor %}
+            {% for new in create_news %}
+                <li>{{ new }}</li>
+            {% endfor %}
         </ul>
-        <h1>YES</h1>
     {% else %}
-        <h1>NO</h1>
+        <form method="post" action="{% url 'create' %}">
+            {% csrf_token %}
+            
+            <label for="textar">Enter Title:</label>
+            <input id="title" placeholder="enter Title">
+            <textarea id="textar" name="textar" rows="4" cols="50"></textarea>
+            <button type="submit">Save</button>
+        </form>
     {% endif %}
 {% endblock %}

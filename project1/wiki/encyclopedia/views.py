@@ -18,6 +18,8 @@ def index(request):
 
 def create_new(request):
     if request.method == "POST":
+        db.execute("SELECT * from saved_pages WHERE user_id = ?", id)
+        db.execute("Insert * into new_pages WHERE user_id = ?", id)
         return render(request,"encyclopedia/create.html",{
         "new_page": util.list_entries()
     })
