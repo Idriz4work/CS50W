@@ -15,7 +15,9 @@ def index(request):
         "entries": util.list_entries()
     })
     else:
-        return render(request,"encyclopedia/index.html")
+        textar = db.execute("SELECT textar from saved_pages")
+        title = db.execute("SELECT title from saved_pages")
+        return render(request,"encyclopedia/index.html", title, textar)
 
 def create_new(request):
     if request.method == "POST":
