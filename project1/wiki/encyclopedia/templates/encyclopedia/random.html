@@ -8,8 +8,8 @@
     <h1>Random page</h1>
 
     <ul>
-        {% for entry in rand %}
-            <li>{{ entry }}</li>
+        {% for ran in save %}
+            <li>random page {{ ran.id }}: {{ ran.title }} to {{ ran.textar }}</li>
         {% endfor %}
     </ul>
 
