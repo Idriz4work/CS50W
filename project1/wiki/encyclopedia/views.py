@@ -6,9 +6,8 @@ from .util import list_entries
 from django.db import connection
 from . import util
 from sqlalchemy import create_engine, MetaData
-
-# Assuming you have already defined your Django app instance in the 'app' variable
-
+# Import our flight model
+from models.saved_pages import saved_pages
 
 def index(request):
     if request.method == "POST":
@@ -16,10 +15,7 @@ def index(request):
             "entries": util.list_entries()
         })
     else:
-        title = connection.cursor()
-        title.execute("SELECT title FROM saved_pages")
-        title_result = title.fetchone()
-
+        
         if title_result:
             return render(request, "encyclopedia/index.html", {
                 "ent": util.get_entry(title_result[0])
@@ -29,15 +25,18 @@ def index(request):
 
 def create_new(request):
     if request.method == "POST":
-        user_id = request.session.get('user_id', None)
-        title = request.POST.get("title", "")
+        id = request.session.get('user_id', None)
+        titles = request.POST.get("title", "")
         text = request.POST.get("textar", "")
 
         if user_id not in request.session:
             request.session["user_id"] = []
 
-        with connection.cursor() as cursor:
-            cursor.execute("INSERT INTO saved_pages (user_id, title, page_text) VALUES (%s, %s, %s)", (user_id, title, text))
+        # Create a new page
+        f = saved_pages(title=titles, text_page=text, user_id=id)
+
+        # Instert that page into our database
+        f.save()
 
         return render(request, "encyclopedia/create.html", {
             "user_id": request.session["user_id"]
