@@ -24,22 +24,24 @@ def index(request):
 
 def create_new(request):
     if request.method == "POST":
-        id = request.session.get('user_id', None)
+        ids = request.session.get('user_id', None)
         titles = request.POST.get("title", "")
         text = request.POST.get("textar", "")
 
-        if user_id not in request.session:
-            request.session["user_id"] = []
+        if ids is not None:
+            # Create a new page instance
+            new_page = saved_pages(title=titles, text_page=text, user_id=ids)
 
-        # Create a new page
-        f = saved_pages(title=titles, text_page=text, user_id=id)
+            # Save the new page to the database
+            new_page.save()
 
-        # Instert that page into our database
-        f.save()
-
-        return render(request, "encyclopedia/create.html", {
+            return render(request, "encyclopedia/create.html", {
             "user_id": request.session["user_id"]
         })
+        else:
+            # Handle the case when user_id is not in the session
+            return HttpResponse("User not logged in.")
+
     else:
         return render(request, "encyclopedia/create.html")
 
