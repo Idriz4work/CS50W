@@ -1,4 +1,4 @@
-from django.shortcuts import render
+
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 from django.shortcuts import render, redirect
@@ -14,13 +14,17 @@ db = create_engine("sqlite:///db.sqlite3")
 def index(request):
     if request.method == "POST":
         return render(request, "encyclopedia/index.html", {
-        "entries": util.list_entries()
-    })
+            "entries": util.list_entries()
+        })
     else:
-         #with connection.cursor() as db:
-            #textar = db.execute("SELECT page_text from new_pages")
-            #title = db.execute("SELECT title from new_pages")
-        return render(request,"encyclopedia/index.html")
+        title = db.execute("SELECT title from saved_pages") 
+        if title != 0:
+            return render(request, "encyclopedia/index.html", {
+            "ent": util.get_entry(title)
+        })
+        else:
+            return render(request, "encyclopedia/index.html")
+
 
 def create_new(request):
     if request.method == "POST":
