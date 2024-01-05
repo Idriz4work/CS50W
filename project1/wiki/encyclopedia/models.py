@@ -10,4 +10,4 @@ class saved_pages(models.Model):
     def __str__(self):
         return f"{self.user_id}: {self.title} to {self.text_page}"
 
-#page = saved_pages(title=titles, text_page= text, user_id= ids)
+page = saved_pages(title=titles, text_page= text, user_id= ids)

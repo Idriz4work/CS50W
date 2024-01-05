@@ -5,8 +5,6 @@ from .util import list_entries
 from django.db import connection
 from . import util
 from sqlalchemy import create_engine, MetaData
-# Import our flight model
-from models.saved_pages import saved_pages
 
 def index(request):
     if request.method == "POST":
