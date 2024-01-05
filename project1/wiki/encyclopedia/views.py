@@ -26,7 +26,7 @@ def create_new(request):
         titles = request.POST.get("title", "")
         text = request.POST.get("textar", "")
 
-        if ids is not None:
+        if ids is not None and request.method == "POST":
             # Create a new page instance
             new_page = saved_pages(title=titles, text_page=text, user_id=ids)
 
@@ -39,7 +39,6 @@ def create_new(request):
         else:
             # Handle the case when user_id is not in the session
             return HttpResponse("User not logged in.")
-
     else:
         return render(request, "encyclopedia/create.html")
 
