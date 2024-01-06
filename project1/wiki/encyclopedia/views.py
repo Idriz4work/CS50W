@@ -33,6 +33,7 @@ def create_new(request):
         titles = request.POST.get("title", "")
         text = request.POST.get("textar", "")
         if text and titles in request.session:
+            save_entry(title,text)
             # Create a new page instance
             new_page = saved_pages(title=titles, text_page=text)
 
@@ -51,15 +52,12 @@ def create_new(request):
         return render(request, "encyclopedia/create.html")
 
 
-
 def random(request):
-    user_id = session(id)
     if request.method == "POST":
-        titles = request.POST.get("title", "")
-        text = request.POST.get("textar", "")
-        randomPage = saved_pages(title=titles, text_page=text)
+        randomPage = saved_pages(title=title, text_page=text_page)
         return render(request,"encyclopedia/random.html",{
-        "random_page": util.list_entries()
+        "random": util.list_entries()
         })
     else:
+        get_entry(title)
         return render(request,"encyclopedia/random.html")
