@@ -30,13 +30,12 @@ def index(request):
 
 def create_new(request):
     if request.method == "POST":
-        ids = request.session.get('user_id', None)
         titles = request.POST.get("title", "")
         text = request.POST.get("textar", "")
 
         if ids is not None:
             # Create a new page instance
-            new_page = saved_pages(title=titles, text_page=text, user_id=ids)
+            new_page = saved_pages(title=titles, text_page=text)
 
             # Save the new page to the database
             new_page.save()
@@ -54,15 +53,14 @@ def create_new(request):
 
 def random(request):
     user_id = session(id)
-    title = db.execute("SELECT title from saved_pages WHERE id = ?", user_id)
-    textar = db.execute("SELECT page_text from saved_pages WHERE id = ?", user_id)
-
     if request.method == "POST":
+        titles = request.POST.get("title", "")
+        text = request.POST.get("textar", "")
+        randomPage = saved_pages(title=titles, text_page=text)
         return render(request,"encyclopedia/random.html",{
         "random_page": util.list_entries()
     })
     else:
-        with connection.cursor() as db:
-            page = db.execute("")
+        
             
             return render(request,"encyclopedia/random.html")
