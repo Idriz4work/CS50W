@@ -6,11 +6,12 @@
 
 {% block body %}
     <h1>Random page</h1>
-
-    <ul>
-        {% for ran in save %}
-            <li>random page {{ ran.id }}: {{ ran.title }} to {{ ran.textar }}</li>
-        {% endfor %}
-    </ul>
-
+    <form method="get" action="{% url 'random' %}">
+        {% csrf_token %}
+        <ul>
+            {% for ran in save %}
+                <li>random page {{ ran.id }}: {{ ran.title }} to {{ ran.textar }}</li>
+            {% endfor %}
+        </ul>
+    </form>
 {% endblock %}
