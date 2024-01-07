@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from . import util
 from sqlalchemy import create_engine, MetaData
 from django.contrib.auth.decorators import login_required
+import random
 
 from .models import saved_pages  # Import the saved_pages model
 
@@ -33,7 +34,7 @@ def create_new(request):
     if request.method == "POST":
         titles = request.POST.get("title", "")
         text = request.POST.get("textar", "")
-        user_id = request.session.get("id")
+        user_id = request.session.get("user_id")
 
         if text and titles not in request.session:
             request.session[titles] = []  # Use titles as the key
@@ -60,13 +61,21 @@ def create_new(request):
         return render(request, "encyclopedia/create.html")
 
 
-
 def random(request):
     if request.method == "POST":
-        randomPage = saved_pages(title=title, text_page=text_page)
-        return render(request,"encyclopedia/random.html",{
-        "random": util.list_entries()
-        })
-    else:
-        get_entry(title)
-        return render(request,"encyclopedia/random.html")
+        # Assuming util.list_entries() returns a list of entry titles
+        all_entries = util.list_entries()
+        if all_entries:
+            random_title = random.choice(all_entries)
+            random_content = get_entry(random_title)
+
+            # Assuming saved_pages has a 'content' field
+            randomPage = saved_pages(title=random_title, text_page=random_content)
+
+            return render(request, "encyclopedia/random.html", {
+                "random": randomPage
+            })
+
+    return render(request, "encyclopedia/random.html", {
+        "save": saved_pages.objects.all() 
+    })
