@@ -54,7 +54,9 @@ def create_new(request):
             })
         else:
             request.session["title"] = []  # Use consistent key
-            return render(request, "encyclopedia/create.html")
+            return render(request, "encyclopedia/create.html",{
+                request.session["title"]
+            })
             # Handle the case when user_id is not in the session
 
     else:

@@ -6,7 +6,6 @@
 
 {% block body %}
     <h1>Create a new page</h1>
-
     {% if request.method == "POST" %}
         <h2>Successfully created!</h2>
         <ul>
@@ -14,15 +13,15 @@
             <a src="/project1/wiki/encyclopedia/templates/encyclopedia/newpage.html"></a>
         </ul>
     {% else %}
-    {% for ar in articles %}
-    <form method="post" action="{% url 'create' %}">
+        {% for ar in articles %}
+        <form method="post" action="{% url 'create' %}">
         {% csrf_token %}
         <label for="title">Enter Title:</label>
         <input name="title" class="title" placeholder="enter Title">
         <textarea name="textar" class="textar" rows="4" cols="50"></textarea>
         <button type="submit">Save</button>
-    </form>
-    {% endfor %}
+        </form>
+        {% endfor %}
         </form>
     {% endif %}
 {% endblock %}
