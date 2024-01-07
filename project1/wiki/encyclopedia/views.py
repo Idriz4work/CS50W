@@ -47,7 +47,7 @@ def create_new(request):
             new_page.save()
 
             return render(request, "encyclopedia/create.html", {
-                "user_id": request.session["user_id"]
+                "articles": request.session[titles]
             })
         else:
             request.session["title"] = []  # Use consistent key
