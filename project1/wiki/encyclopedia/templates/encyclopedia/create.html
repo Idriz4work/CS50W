@@ -14,7 +14,7 @@
             <a src="/project1/wiki/encyclopedia/templates/encyclopedia/newpage.html"></a>
         </ul>
     {% else %}
-        <form method="post" action="{% url 'create_new' %}">
+        <form method="post" action="{% url 'create' %}">
             {% csrf_token %}
             <label >Enter Title:</label>
             <input name="title" id="title" placeholder="enter Title">
