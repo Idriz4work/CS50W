@@ -32,11 +32,14 @@ def create_new(request):
     if request.method == "POST":
         titles = request.POST.get("title", "")
         text = request.POST.get("textar", "")
+
         if text and titles not in request.session:
-            request.session[titles, text] = []
-        
+            request.session[titles] = []  # Use titles as the key
+
         if text and titles in request.session:
-            save_entry(title,text)
+            # Remove or define the save_entry function
+            # save_entry(title, text)
+
             # Create a new page instance
             new_page = saved_pages(title=titles, text_page=text)
 
@@ -47,12 +50,13 @@ def create_new(request):
                 "user_id": request.session["user_id"]
             })
         else:
-            request.session["title"] = []
+            request.session["title"] = []  # Use consistent key
             return render(request, "encyclopedia/create.html")
             # Handle the case when user_id is not in the session
-           
+
     else:
         return render(request, "encyclopedia/create.html")
+
 
 
 def random(request):
