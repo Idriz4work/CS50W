@@ -32,6 +32,9 @@ def create_new(request):
     if request.method == "POST":
         titles = request.POST.get("title", "")
         text = request.POST.get("textar", "")
+        if text and titles not in request.session:
+            request.session[titles, text] = []
+        
         if text and titles in request.session:
             save_entry(title,text)
             # Create a new page instance
