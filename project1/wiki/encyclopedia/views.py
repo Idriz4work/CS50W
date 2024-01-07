@@ -6,6 +6,7 @@ from django.db import connection
 from django.http import HttpResponse
 from . import util
 from sqlalchemy import create_engine, MetaData
+from django.contrib.auth.decorators import login_required
 
 from .models import saved_pages  # Import the saved_pages model
 
@@ -32,6 +33,7 @@ def create_new(request):
     if request.method == "POST":
         titles = request.POST.get("title", "")
         text = request.POST.get("textar", "")
+        user_id = request.session.get("id")
 
         if text and titles not in request.session:
             request.session[titles] = []  # Use titles as the key
@@ -41,7 +43,7 @@ def create_new(request):
             # save_entry(title, text)
 
             # Create a new page instance
-            new_page = saved_pages(title=titles, text_page=text)
+            new_page = saved_pages(title=titles, text_page=text, user_id=user_id)
 
             # Save the new page to the database
             new_page.save()
