@@ -34,7 +34,7 @@ def index(request):
             random_content = get_entry(random_title)
 
             # Assuming you want to display the first entry, adjust as needed
-            page = SavedPages(title=random_title, text_page=random_content)
+            page = saved_pages(title=random_title, text_page=random_content)
 
             return render(request, "encyclopedia/index.html", {
                 "index": page
@@ -84,10 +84,26 @@ def random(request):
             # Assuming saved_pages has a 'content' field
             randomPage = saved_pages(title=random_title, text_page=random_content)
 
-            return render(request, "encyclopedia/random.html", {
+            return render(request, "encyclopedia/newpage.html", {
                 "random": randomPage
             })
 
     return render(request, "encyclopedia/random.html", {
         "save": saved_pages.objects.all() 
     })
+
+def page(request):
+    if request.method == "POST":
+        return render(request, "encyclopedia/index.html")
+    else:
+        #random_title = get_entry(all_entries)
+        all_entries = util.list_entries()
+        random_title = random.choice(all_entries)
+        random_content = get_entry(random_title)
+
+        # Assuming you want to display the first entry, adjust as needed
+        page = saved_pages(title=random_title, text_page=random_content)
+
+        return render(request,"encyclopedia/newpage.html",{
+            "save" == page
+        })
