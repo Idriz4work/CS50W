@@ -57,7 +57,7 @@ def create_new(request):
             new_page = saved_pages(title=titles, text_page=text, user_id=user_id)
 
             # Save the new page to the database
-            new_page.save_entry(titles, text)
+            new_page.save(titles, text)
 
             return render(request, "encyclopedia/create.html", {
                 "articles": request.session[titles]
