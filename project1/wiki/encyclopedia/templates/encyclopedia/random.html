@@ -10,7 +10,7 @@
         {% csrf_token %}
         <ul>
             {% for ran in save %}
-                <li>random page {{ ran.id }}: {{ ran.title }} to {{ ran.text_page }}</li>
+                <li>random page {{ ran.title }} to {{ ran.text_page }}</li>
             {% endfor %}
         </ul>
         <button type="submit">Get Random Page</button>
