@@ -27,7 +27,7 @@ def index(request):
             return render(request, "encyclopedia/index.html", {
                 "index": page
             })
-    elif request.method == "POST":
+    else:
         all_entries = util.list_entries()
         if all_entries:
             random_title = get_entry(all_entries)
@@ -39,12 +39,7 @@ def index(request):
             return render(request, "encyclopedia/index.html", {
                 "index": page
             })
-
-    return render(request, "encyclopedia/index.html", {
-        "index": None  # Handle the case where there are no entries
-    })
-
-
+        
 def create_new(request):
     if request.method == "POST":
         titles = request.POST.get("title", "")

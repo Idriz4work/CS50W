@@ -6,7 +6,6 @@
 
 {% block body %}
     <h1>All Pages</h1>
-
     {% if request.method == "GET" %}
         <h2>All created pages</h2>
         <form method="get" action="{% url 'index' %}">
