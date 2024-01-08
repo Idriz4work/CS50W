@@ -3,16 +3,13 @@
 {% block title %}
     Encyclopedia
 {% endblock %}
+
 {% block body %}
-    {% if request.method == "GET" %}
-        <h1>Random page</h1>
-        <form method="get" action="{% url 'random' %}">
-            {% csrf_token %}
-            <h2>Get a random Article</h2>
-            <button type="submit">Get Random Page</button>
-        </form>
-    {% else %}
-        <a href="{% url 'page' %}">Go to New Page</a>
-    {% endif %}
+    <h1>Random page</h1>
+    <form method="post" action="{% url 'random_page' %}">
+        {% csrf_token %}
+        <h2>Get a random Article</h2>
+        <button type="submit">Get Random Page</button>
+    </form>
 {% endblock %}
 

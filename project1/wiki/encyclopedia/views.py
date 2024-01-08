@@ -66,7 +66,7 @@ def create_new(request):
         return render(request, "encyclopedia/create.html")
 
 
-def random_(request):
+def random_page(request):
     if request.method == "POST":
         all_entries = util.list_entries()
         if all_entries:
@@ -79,7 +79,7 @@ def random_(request):
         return render(request, "encyclopedia/random.html")
 
 
-def page(request):
+def new_page(request):
     if request.method == "POST":
         return render(request, "encyclopedia/index.html")
     else:
