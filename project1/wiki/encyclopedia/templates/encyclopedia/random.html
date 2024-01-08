@@ -9,6 +9,7 @@
     <form method="post" action="{% url 'random' %}">
         {% csrf_token %}
         <ul>
+            <a href="{% url 'random' %}">Random Page</a>
             {% for ran in save %}
                 <li>random page {{ ran.title }} to {{ ran.text_page }}</li>
             {% endfor %}
