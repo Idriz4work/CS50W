@@ -6,7 +6,7 @@
 
 {% block body %}
     <h1>Random page</h1>
-    <form method="post" action="{% url 'random_page' %}">
+    <form method="post" action="{% url 'random' %}">
         {% csrf_token %}
         <h2>Get a random Article</h2>
         <button type="submit">Get Random Page</button>

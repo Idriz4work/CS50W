@@ -74,7 +74,7 @@ def random_page(request):
             # Assuming get_entry and saved_pages are defined elsewhere
             random_content = get_entry(random_title)
             randomPage = saved_pages(title=random_title, text_page=random_content)
-            return redirect('new_page')  # Redirect to the 'new_page' view
+            return render(request, "encyclopedia/newpage.html") # Redirect to the 'new_page' view
     else:
         return render(request, "encyclopedia/random.html")
 
