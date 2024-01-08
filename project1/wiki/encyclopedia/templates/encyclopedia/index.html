@@ -18,7 +18,7 @@
             </ul>
         </form>
     {% else %}
-        <form method="post" action="{% url 'article' %}">
+        <form method="post" action="{% url 'page' %}">
             {% csrf_token %}
             <!-- Include form fields here if needed -->
             <button type="submit">Submit</button>

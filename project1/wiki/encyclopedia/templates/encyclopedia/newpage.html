@@ -4,24 +4,23 @@
     Encyclopedia
 {% endblock %}
 
-{%block body%}
-<body>
-    {%if request.method == "GET"%}
-    <h1>Random page</h1>
-    <form method="get" action="{% url 'page' %}">
-        {% csrf_token %}
-        <h2>Get a random Article</h2>
-        <ul>
-            {% for ran in save %}
-            <ul>
-                <li>random page {{ ran.title }} to {{ ran.text_page }}</li>
-            </ul>
-            {% endfor %}
-        </ul>
-    </form>
+{% block body %}
+    {% if request.method == "POST" %}
+        {% for ran in save %}
+            <h1>{{ ran.title }}</h1>
+            <p>{{ ran.text_page }}</p>
+            <form method="get" action="{% url 'page' %}">
+                {% csrf_token %}
+                <!-- Include any form fields here if needed -->
+                <button type="submit">Go to Page</button>
+            </form>
+        {% endfor %}
     {% else %}
-    <form method="post" action="{% url 'page' %}"></form>
-    <button type="submit">Go back to index</button>
+        <form method="post" action="{% url 'page' %}">
+            {% csrf_token %}
+            <!-- Include any form fields here if needed -->
+            <button type="submit">Submit</button>
+        </form>
+        <a href="{% url 'index' %}">Go back to index</a>
     {% endif %}
-</body>
 {% endblock %}

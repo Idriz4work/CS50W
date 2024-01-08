@@ -1,5 +1,6 @@
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
+from django.forms import ChoiceField
 from django.shortcuts import render, redirect
 from .util import list_entries, save_entry, get_entry
 from django.db import connection
@@ -80,17 +81,19 @@ def random_page(request):
 
 
 def new_page(request):
+    all_entries = util.list_entries()
+    title = get_entry(all_entries)
+    content = get_entry(title)
     if request.method == "POST":
-        return render(request, "encyclopedia/index.html")
-    else:
-        #random_title = get_entry(all_entries)
-        all_entries = util.list_entries()
-        random_title = random.choice(all_entries)
-        random_content = get_entry(random_title)
-
-        # Assuming you want to display the first entry, adjust as needed
-        page = saved_pages(title=random_title, text_page=random_content)
+        page = saved_pages(title=title, text_page=content)
 
         return render(request,"encyclopedia/newpage.html",{
-            "save": saved_pages.objects.all() 
+            "save": page 
+        })
+    else:
+        # Assuming you want to display the first entry, adjust as needed
+        page = saved_pages(title=title, text_page=content)
+
+        return render(request,"encyclopedia/newpage.html",{
+            "save": page 
         })
