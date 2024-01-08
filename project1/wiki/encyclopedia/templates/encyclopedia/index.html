@@ -9,10 +9,10 @@
 
     {% if request.method == "GET" %}
         <h2>All created pages</h2>
-        <form method="get" action="">
+        <form method="get" action="{% url 'index' %}">
             {% csrf_token %}
             <ul>
-                <a href="{% url '' %}">Index of pages</a>
+                <a href="{% url 'index' %}">Index of pages</a>
                 {% for ran in save %}
                     <li>Created pages title: {{ ran.title }} text: {{ ran.text_page }}<button type="submit">Go to Page</button></li>
                 {% endfor %}
