@@ -11,27 +11,37 @@ import random
 
 from .models import saved_pages  # Import the saved_pages model
 
+from django.shortcuts import render
+from .models import saved_pages  # Import your model
+
 def index(request):
-    if request.method == "POST":
-        # Handle POST request, return list of entries
-        return render(request, "encyclopedia/index.html", {
-            "entries": util.list_entries()
-        })
-    else:
-        # Adjust the query according to your model structure
-        random_title = random.choice(all_entries)
-        random_content = get_entry(random_title)
-        title_results = saved_pages.objects.all()
+    if request.method == "GET":
+        all_entries = util.list_entries()
+        if all_entries:
+            random_title = random.choice(all_entries)
+            random_content = get_entry(random_title)
 
-        if title_results:
             # Assuming you want to display the first entry, adjust as needed
-            pages = saved_pages(title=random_title, text_page=random_content)
+            page = saved_pages(title=random_title, text_page=random_content)
 
-            return render(request, "encyclopedia/random.html", {
-                "index": pages
+            return render(request, "encyclopedia/index.html", {
+                "index": page
             })
+    elif request.method == "POST":
+        all_entries = util.list_entries()
+        if all_entries:
+            random_title = random.choice(all_entries)
+            random_content = get_entry(random_title)
+
+            # Assuming you want to display the first entry, adjust as needed
+            page = SavedPages(title=random_title, text_page=random_content)
+
+            return render(request, "encyclopedia/index.html", {
+                "index": page
+            })
+
     return render(request, "encyclopedia/index.html", {
-        "save": saved_pages.objects.all() 
+        "index": None  # Handle the case where there are no entries
     })
 
 
