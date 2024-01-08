@@ -9,11 +9,11 @@
     <ul>
         <a>All the pages created</a>
         {%if request.method == "GET"%}
-    <h1>Random page</h1>
-    <form method="get" action="{% url 'index' %}">
+    <h1> All created pages</h1>
+    <form method="get" action="{% url '' %}">
         {% csrf_token %}
         <ul>
-            <a href="{% url 'index' %}">Random Page</a>
+            <a href="{% url '' %}">Index of pages</a>
             {% for ran in save %}
             <ul>
                 <li> Created pages title: {{ ran.title }} text: {{ ran.text_page }}</li><button type="submit">Go to Page</button>
