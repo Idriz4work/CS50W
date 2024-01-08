@@ -1,7 +1,7 @@
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 from django.shortcuts import render, redirect
-from .util import list_entries, save_entry
+from .util import list_entries, save_entry, get_entry
 from django.db import connection
 from django.http import HttpResponse
 from . import util
