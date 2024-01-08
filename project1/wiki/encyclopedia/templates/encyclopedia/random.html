@@ -8,10 +8,13 @@
     <h1>Random page</h1>
     <form method="post" action="{% url 'random' %}">
         {% csrf_token %}
+        <h2>Get a random Article</h2>
         <ul>
             <a href="{% url 'random' %}">Random Page</a>
             {% for ran in save %}
-                <li>random page {{ ran.title }} to {{ ran.text_page }}</li>
+            <ul>
+                <select name="art_random" id="r"><li>random page {{ ran.title }} to {{ ran.text_page }}</li></select>
+            </ul>
             {% endfor %}
         </ul>
         <button type="submit">Get Random Page</button>
