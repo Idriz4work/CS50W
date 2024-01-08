@@ -5,8 +5,9 @@
 {% endblock %}
 
 {% block body %}
+    {%if request.method == "GET"%}
     <h1>Random page</h1>
-    <form method="post" action="{% url 'random' %}">
+    <form method="get" action="{% url 'random' %}">
         {% csrf_token %}
         <h2>Get a random Article</h2>
         <ul>
@@ -19,4 +20,7 @@
         </ul>
         <button type="submit">Get Random Page</button>
     </form>
+    {% else %}
+    <form method="post" action="{% url 'article' %}"></form>
+    {% endif %}
 {% endblock %}
