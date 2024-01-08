@@ -6,7 +6,7 @@
 <body>
     {%if request.method == "GET"%}
     <h1>Random page</h1>
-    <form method="get" action="{% url 'newpage' %}">
+    <form method="get" action="{% url 'page' %}">
         {% csrf_token %}
         <h2>Get a random Article</h2>
         <ul>
@@ -16,10 +16,10 @@
             </ul>
             {% endfor %}
         </ul>
-        <button type="submit">Get Random Page</button>
     </form>
     {% else %}
-    <form method="post" action="{% url 'article' %}"></form>
+    <form method="post" action="{% url 'page' %}"></form>
+    <button type="submit">Go back to index</button>
     {% endif %}
 </body>
 {% endblock %}

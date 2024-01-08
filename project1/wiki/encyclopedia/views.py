@@ -8,10 +8,7 @@ from . import util
 from sqlalchemy import create_engine, MetaData
 from django.contrib.auth.decorators import login_required
 import random
-
-from .models import saved_pages  # Import the saved_pages model
-
-from django.shortcuts import render
+from django.urls import reverse
 from .models import saved_pages  # Import your model
 
 def index(request):
@@ -69,22 +66,18 @@ def create_new(request):
         return render(request, "encyclopedia/create.html")
 
 
-def random(request):
+def random_(request):
     if request.method == "POST":
-        # Assuming util.list_entries() returns a list of entry titles
         all_entries = util.list_entries()
         if all_entries:
             random_title = random.choice(all_entries)
+            # Assuming get_entry and saved_pages are defined elsewhere
             random_content = get_entry(random_title)
-
-            # Assuming saved_pages has a 'content' field
             randomPage = saved_pages(title=random_title, text_page=random_content)
-
-            return render(request, "encyclopedia/newpage.html", {
-                "random": randomPage
-            })
+            return redirect('new_page')  # Redirect to the 'new_page' view
     else:
         return render(request, "encyclopedia/random.html")
+
 
 def page(request):
     if request.method == "POST":
