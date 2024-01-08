@@ -44,30 +44,26 @@ def create_new(request):
     if request.method == "POST":
         titles = request.POST.get("title", "")
         text = request.POST.get("textar", "")
-        user_id = request.session.get("user_id")
+        #user_id = request.session.get("user_id")
 
         if text and titles not in request.session:
             request.session[titles] = []  # Use titles as the key
 
         if text and titles in request.session:
-            # Remove or define the save_entry function
-            # save_entry(title, text)
-
             # Create a new page instance
-            new_page = saved_pages(title=titles, text_page=text, user_id=user_id)
+            new_page = saved_pages(title=titles, text_page=text)
 
             # Save the new page to the database
-            new_page.save(titles, text)
+            save_entry(new_page)
 
             return render(request, "encyclopedia/create.html", {
                 "articles": request.session[titles]
             })
         else:
-            request.session["title"] = []  # Use consistent key
+            request.session["title"] = [] 
             return render(request, "encyclopedia/create.html",{
                 request.session["title"]
             })
-            # Handle the case when user_id is not in the session
 
     else:
         return render(request, "encyclopedia/create.html")
@@ -87,10 +83,8 @@ def random(request):
             return render(request, "encyclopedia/newpage.html", {
                 "random": randomPage
             })
-
-    return render(request, "encyclopedia/random.html", {
-        "save": saved_pages.objects.all() 
-    })
+    else:
+        return render(request, "encyclopedia/random.html")
 
 def page(request):
     if request.method == "POST":
@@ -105,5 +99,5 @@ def page(request):
         page = saved_pages(title=random_title, text_page=random_content)
 
         return render(request,"encyclopedia/newpage.html",{
-            "save" == page
+            "save": saved_pages.objects.all() 
         })
