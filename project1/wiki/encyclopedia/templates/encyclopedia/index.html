@@ -6,22 +6,23 @@
 
 {% block body %}
     <h1>All Pages</h1>
-    <ul>
-        <a>All the pages created</a>
-        {%if request.method == "GET"%}
-    <h1> All created pages</h1>
-    <form method="get" action="{% url '' %}">
-        {% csrf_token %}
-        <ul>
-            <a href="{% url '' %}">Index of pages</a>
-            {% for ran in save %}
+
+    {% if request.method == "GET" %}
+        <h2>All created pages</h2>
+        <form method="get" action="">
+            {% csrf_token %}
             <ul>
-                <li> Created pages title: {{ ran.title }} text: {{ ran.text_page }}</li><button type="submit">Go to Page</button>
+                <a href="{% url '' %}">Index of pages</a>
+                {% for ran in save %}
+                    <li>Created pages title: {{ ran.title }} text: {{ ran.text_page }}<button type="submit">Go to Page</button></li>
+                {% endfor %}
             </ul>
-            {% endfor %}
-        </ul>
-    </form>
+        </form>
     {% else %}
-    <form method="post" action="{% url 'article' %}"></form>
+        <form method="post" action="{% url 'article' %}">
+            {% csrf_token %}
+            <!-- Include form fields here if needed -->
+            <button type="submit">Submit</button>
+        </form>
     {% endif %}
 {% endblock %}
