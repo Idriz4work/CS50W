@@ -19,15 +19,20 @@ def index(request):
         })
     else:
         # Adjust the query according to your model structure
+        random_title = random.choice(all_entries)
+        random_content = get_entry(random_title)
         title_results = saved_pages.objects.all()
 
         if title_results:
             # Assuming you want to display the first entry, adjust as needed
-            return render(request, "encyclopedia/index.html", {
-                "ent": util.get_entry(title_results[0].title)
+            pages = saved_pages(title=random_title, text_page=random_content)
+
+            return render(request, "encyclopedia/random.html", {
+                "index": pages
             })
-        else:
-            return render(request, "encyclopedia/index.html")
+    return render(request, "encyclopedia/index.html", {
+        "save": saved_pages.objects.all() 
+    })
 
 
 def create_new(request):

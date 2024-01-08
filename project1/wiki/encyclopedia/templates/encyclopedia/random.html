@@ -14,7 +14,7 @@
             <a href="{% url 'random' %}">Random Page</a>
             {% for ran in save %}
             <ul>
-                <select name="art_random" id="r"><li>random page {{ ran.title }} to {{ ran.text_page }}</li></select>
+                <li>random page {{ ran.title }} to {{ ran.text_page }}</li>
             </ul>
             {% endfor %}
         </ul>

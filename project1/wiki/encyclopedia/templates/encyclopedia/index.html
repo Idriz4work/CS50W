@@ -6,11 +6,22 @@
 
 {% block body %}
     <h1>All Pages</h1>
-
     <ul>
-        {% for entry in entries %}
-            <li>{{ entry }}</li>
-        {% endfor %}
-    </ul>
-
+        <a>All the pages created</a>
+        {%if request.method == "GET"%}
+    <h1>Random page</h1>
+    <form method="get" action="{% url 'index' %}">
+        {% csrf_token %}
+        <ul>
+            <a href="{% url 'index' %}">Random Page</a>
+            {% for ran in save %}
+            <ul>
+                <li> Created pages title: {{ ran.title }} text: {{ ran.text_page }}</li><button type="submit">Go to Page</button>
+            </ul>
+            {% endfor %}
+        </ul>
+    </form>
+    {% else %}
+    <form method="post" action="{% url 'article' %}"></form>
+    {% endif %}
 {% endblock %}
