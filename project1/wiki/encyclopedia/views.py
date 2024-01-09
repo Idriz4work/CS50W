@@ -83,8 +83,8 @@ def random_page(request):
 
 def new_page(request):
     all_entries = util.list_entries()
-    title = (all_entries)
-    content = (title)
+    title = all_entries
+    content = title
     if request.method == "POST":
         page = saved_pages(title=title, text_page=content)
 
