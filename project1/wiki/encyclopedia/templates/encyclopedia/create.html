@@ -5,24 +5,40 @@
 {% endblock %}
 
 {% block body %}
+<style>
+    h1{
+        color: black;
+        background-color: beige;
+        display: center flex;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size: larger;
+        text-align: center;
+        border: 3px rgb(31, 98, 139) solid;
+        width: auto;
+        padding: 10px;
+        margin: 10px;
+    }
+</style>
+<div class="center">
     <h1>Create a new page</h1>
     {% if request.method == "POST" %}
-        <h2>Successfully created!</h2>
+    <h2>Successfully created!</h2>
         <ul>
             {% for ar in articles %}
             <p>Visit your new page !</p>
             <a src="/project1/wiki/encyclopedia/templates/encyclopedia/newpage.html"></a>
             {% endfor %}
         </ul>
-    {% else %}
+        {% else %}
         <form method="post" action="{% url 'create' %}">
-        {% csrf_token %}
-        <label for="title">Enter Title:</label>
-        
-        <input name="title" class="title" placeholder="enter Title">
-        <textarea name="textar" class="textar" rows="4" cols="50"></textarea>
-        <button type="submit">Save</button>
+            {% csrf_token %}
+            <label for="title">Enter Title:</label>
+            
+            <input name="title" class="title" placeholder="enter Title">
+            <textarea name="textar" class="textar" rows="4" cols="50"></textarea>
+            <button type="submit">Save</button>
         </form>
-        </form>
+    </form>
     {% endif %}
+</div>
 {% endblock %}
