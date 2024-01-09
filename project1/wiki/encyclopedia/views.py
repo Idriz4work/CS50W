@@ -2,6 +2,7 @@ from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 from django.forms import ChoiceField
 from django.shortcuts import render, redirect
+from numpy import save
 from .util import list_entries, save_entry, get_entry
 from django.db import connection
 from django.http import HttpResponse
@@ -52,7 +53,7 @@ def create_new(request):
             new_page = saved_pages(title=titles, text_page=text)
 
             # Save the new page to the database
-            save_entry(new_page)
+            new_page.save()
 
             return render(request, "encyclopedia/create.html", {
                 "articles": request.session[titles]
