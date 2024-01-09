@@ -27,10 +27,13 @@
     height: auto;
 }
 h1{
-    color: blanchedalmond;
-    background: black;
+    color: black;
+    background: aliceblue;
     border: 3px solid red;
-    
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 5px;
+    margin: 5;
+    text-align: center;
 }
 #bu{
     color: black;
@@ -50,11 +53,20 @@ h1{
     color: yellow;
     background-color: black;
 }
+#h2{
+    color: black;
+    background-color: whitesmoke;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border: 1px solid black;
+    padding: 15px;
+    margin: 15px;
+    text-align: left;
+}
 </style>
-    <h1>Random page</h1>
+    <h1 >Random page</h1>
     <form method="post" action="{% url 'random' %}">
         {% csrf_token %}
-        <h2>Get a random Article</h2>
+        <h2 id="h2">Get a random Article</h2>
         <p class="rand" id="ran">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem mollitia quibusdam laborum nulla,
              consectetur deleniti in culpa modi excepturi vitae ea itaque eos consequuntur reiciendis, ipsum perspiciatis. Quis, explicabo similique.</p>
         <button id="bu" type="submit">Get Random Page</button>
