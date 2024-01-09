@@ -27,7 +27,6 @@
 h1{
     color: black;
     background: aliceblue;
-    border: 3px solid red;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     padding: 5px;
     margin: 5;
@@ -60,14 +59,21 @@ h1{
     margin: 15px;
     text-align: left;
 }
+.center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Optional: Center vertically in the viewport */
+        }
 </style>
-    <h1 >Random page</h1>
     <form method="post" action="{% url 'random' %}">
         {% csrf_token %}
         <h2 id="h2">Get a random Article</h2>
         <p class="rand" id="ran">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem mollitia quibusdam laborum nulla,
              consectetur deleniti in culpa modi excepturi vitae ea itaque eos consequuntur reiciendis, ipsum perspiciatis. Quis, explicabo similique.</p>
-        <button id="bu" type="submit">Get Random Page</button>
+             <div class="center">
+                 <button id="bu" type="submit">Get Random Page</button>
+            </div>
     </form>
 {% endblock %}
 
