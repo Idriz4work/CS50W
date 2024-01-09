@@ -5,13 +5,59 @@
 {% endblock %}
 
 {% block body %}
+<style>
+    #ran{
+    color: black;
+    background-color: bisque;
+    border: 1px solid black;
+    text-align: center;
+    display: block;
+    width: auto;
+    height: auto;
+}
+.rand{
+    color: black;
+    background-color: bisque;
+    border: 1px solid black;
+    margin: 10px;
+    padding: 5px;
+    text-align: center;
+    display: block;
+    width: auto;
+    height: auto;
+}
+h1{
+    color: blanchedalmond;
+    background: black;
+    border: 3px solid red;
+    
+}
+#bu{
+    color: black;
+    background-color: burlywood;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    display: flex;
+    position: relative;
+}
+#bu:hover{
+    color: rgb(35, 22, 22);
+    background-color: rgb(179, 78, 78);
+}
+#bu:active{
+    color: yellow;
+    background-color: black;
+}
+</style>
     <h1>Random page</h1>
     <form method="post" action="{% url 'random' %}">
         {% csrf_token %}
         <h2>Get a random Article</h2>
         <p class="rand" id="ran">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem mollitia quibusdam laborum nulla,
              consectetur deleniti in culpa modi excepturi vitae ea itaque eos consequuntur reiciendis, ipsum perspiciatis. Quis, explicabo similique.</p>
-        <button type="submit">Get Random Page</button>
+        <button id="bu" type="submit">Get Random Page</button>
     </form>
 {% endblock %}
 
