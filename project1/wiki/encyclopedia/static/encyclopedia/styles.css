@@ -36,3 +36,21 @@ textarea {
 .sidebar h2 {
     margin-top: 5px;
 }
+#ran{
+    color: black;
+    background-color: bisque;
+    border: 1px solid black;
+    text-align: center;
+    display: block;
+    width: auto;
+    height: auto;
+}
+.rand{
+    color: black;
+    background-color: bisque;
+    border: 1px solid black;
+    text-align: center;
+    display: block;
+    width: auto;
+    height: auto;
+}

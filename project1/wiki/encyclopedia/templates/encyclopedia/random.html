@@ -9,6 +9,8 @@
     <form method="post" action="{% url 'random' %}">
         {% csrf_token %}
         <h2>Get a random Article</h2>
+        <p class="rand" id="ran">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem mollitia quibusdam laborum nulla,
+             consectetur deleniti in culpa modi excepturi vitae ea itaque eos consequuntur reiciendis, ipsum perspiciatis. Quis, explicabo similique.</p>
         <button type="submit">Get Random Page</button>
     </form>
 {% endblock %}
