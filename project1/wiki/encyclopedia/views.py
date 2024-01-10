@@ -55,13 +55,16 @@ def create_new(request):
             # Save the new page to the database
             new_page.save()
 
+            # Fetch all articles from the database
+            articles = saved_pages.objects.all()
+
             return render(request, "encyclopedia/create.html", {
-                "articles": new_page
+                "articles": articles
             })
         else:
             request.session["title"] = [] 
-            return render(request, "encyclopedia/create.html",{
-                "articles": new_page
+            return render(request, "encyclopedia/create.html", {
+                "articles": []  # Empty list if there is an issue
             })
 
     else:
