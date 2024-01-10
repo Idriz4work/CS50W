@@ -36,8 +36,7 @@
         <form method="post" action="{% url 'page' %}">
             {% csrf_token %}
             <!-- Include any form fields here if needed -->
-            <button type="submit">Submit</button>
+            <button href="{% url 'index' %}" type="submit">Go back to index</button>
         </form>
-        <a href="{% url 'index' %}">Go back to index</a>
     {% endif %}
 {% endblock %}
