@@ -61,7 +61,7 @@ def create_new(request):
         else:
             request.session["title"] = [] 
             return render(request, "encyclopedia/create.html",{
-                "articles": request.session["title"]
+                "articles": new_page
             })
 
     else:
