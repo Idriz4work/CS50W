@@ -5,5 +5,22 @@
 {% endblock %}
 
 {% block body %}
-    
+<h1>All Pages</h1>
+    <form method="get" action="{% url 'index' %}">
+        {% csrf_token %}
+            <ul>
+                {% for i in index%}
+                    {% for ran in i %}
+                        <li>Created pages title: {{ ran.title }} text: {{ ran.text_page }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </form>
+    {% else %}
+        <form method="post" action="{% url 'page' %}">
+            {% csrf_token %}
+            <!-- Include form fields here if needed -->
+            <button type="submit">Submit</button>
+        </form>
+    {% endif %}
 {% endblock %}

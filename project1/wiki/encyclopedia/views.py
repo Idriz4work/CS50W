@@ -24,7 +24,7 @@ def index(request):
             page = saved_pages(title=random_title, text_page=random_content)
 
             return render(request, "encyclopedia/index.html", {
-                "index": page
+                "index": util.list_entries()
             })
     else:
         all_entries = util.list_entries()
@@ -36,7 +36,7 @@ def index(request):
             page = saved_pages(title=random_title, text_page=random_content)
 
             return render(request, "encyclopedia/index.html", {
-                "index": page
+                "index": util.list_entries()
             })
         
 def create_new(request):
@@ -56,7 +56,7 @@ def create_new(request):
             new_page.save()
 
             return render(request, "encyclopedia/create.html", {
-                "articles": request.session[titles]
+                "articles": new_page
             })
         else:
             request.session["title"] = [] 
