@@ -92,12 +92,12 @@ def new_page(request):
         page = saved_pages(title=title, text_page=content)
 
         return render(request,"encyclopedia/newpage.html",{
-            "save": page 
+            "save": util.get_entry()
             })
     else:
         # Assuming you want to display the first entry, adjust as needed
         page = saved_pages(title=title, text_page=content)
 
         return render(request,"encyclopedia/newpage.html",{
-            "save": page 
+            "save": util.get_entry() 
         })
