@@ -25,15 +25,13 @@
     {{title}}
     <br>
     {{text_page}}
-        {% for ran in save %}
-            <h1>{{ ran.title }}</h1>
-            <p>{{ ran.text_page }}</p>
-            <form method="get" action="{% url 'page' %}">
-                {% csrf_token %}
-                <!-- Include any form fields here if needed -->
-                <button type="submit">Go to Page</button>
-            </form>
+    <ul>
+        {% for i in index%}
+            {% for ran in index %}
+                <li>Created pages title: {{ ran.title }} text: {{ ran.text_page }}</li>
+            {% endfor %}
         {% endfor %}
+    </ul>
     {% else %}
         <form method="post" action="{% url 'page' %}">
             {% csrf_token %}

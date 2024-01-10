@@ -11,9 +11,10 @@
         <form method="get" action="{% url 'index' %}">
             {% csrf_token %}
             <ul>
-                <a href="{% url 'page' %}">Index of pages</a>
-                {% for ran in save %}
-                    <li>Created pages title: {{ ran.title }} text: {{ ran.text_page }}<button type="submit">Go to Page</button></li>
+                {% for i in index%}
+                    {% for ran in i %}
+                        <li>Created pages title: {{ ran.title }} text: {{ ran.text_page }}</li>
+                    {% endfor %}
                 {% endfor %}
             </ul>
         </form>
