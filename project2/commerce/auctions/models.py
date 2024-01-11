@@ -4,6 +4,7 @@ from django.db import models
 
 class User(AbstractUser):
     username = models.CharField(max_length=64)
+    is_authenticated = models.BooleanField(True)
     user_id = models.IntegerField()
 
 class comments(models.Model):
