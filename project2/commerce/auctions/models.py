@@ -5,7 +5,7 @@ from django.db import models
 class User(AbstractUser):
     # No need to redefine username, email, and password
     user_id = models.IntegerField()
-
+    
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     origin = models.CharField(max_length=64)

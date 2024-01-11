@@ -5,17 +5,13 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
-from .models import User
-
+from .models import User, Comment, AuctionListing, Bid
 
 @login_required
 def index(request):
     is_authenticated = True
-    return render(request, "auctions/index.html",{
-        'is_authenticated': is_authenticated
-    })
+    return render(request, "auctions/index.html")
 
-@login_required
 def login_view(request):
     if request.method == "POST":
 
@@ -71,7 +67,14 @@ def register(request):
 
 @login_required
 def watchlist(request):
-    return render(request, "watchlist.html")
+    item = AuctionListing.objects.get(item_name="")
+    price = AuctionListing.objects.get(price="")
+    count = AuctionListing.objects.get(item_count="")
+
+    watchlist = AuctionListing(item_name = item, item_count = count, price = price) 
+    return render(request, "watchlist.html",{
+        "watchlist" = watchlist
+    })
 
 
 @login_required
