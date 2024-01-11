@@ -73,10 +73,10 @@ def watchlist(request):
 
     watchlist = AuctionListing(item_name = item, item_count = count, price = price) 
     return render(request, "watchlist.html",{
-        "watchlist" = watchlist
+        "watchlist":  watchlist
     })
 
 
 @login_required
 def categories(request):
-    return redner(request, "categories.html")
+    return render(request, "categories.html")
