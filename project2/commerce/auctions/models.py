@@ -3,4 +3,17 @@ from django.db import models
 
 
 class User(AbstractUser):
-    pass
+    username = models.CharField(max_length=64)
+    user_id = models.IntegerField()
+
+class comments(models.Model):
+    origin = models.CharField(max_length=64)
+    duration = models.IntegerField()
+
+class bids(models.Model):
+    origin = models.CharField(max_length=64)
+    duration = models.IntegerField()
+
+class auction_listings(models.Model):
+    origin = models.CharField(max_length=64)
+    duration = models.IntegerField()
