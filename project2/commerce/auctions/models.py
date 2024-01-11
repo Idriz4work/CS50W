@@ -15,5 +15,6 @@ class bids(models.Model):
     duration = models.IntegerField()
 
 class auction_listings(models.Model):
-    origin = models.CharField(max_length=64)
-    duration = models.IntegerField()
+    item_name = models.TextField
+    item_count = models.IntegerField()
+    price = models.IntegerField()
