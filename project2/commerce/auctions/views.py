@@ -10,6 +10,9 @@ from .models import User, Comment, AuctionListing, Bid
 @login_required
 def index(request):
     is_authenticated = True
+    if request.method == "POST":
+        return render(request, "auctions/index.html")
+    
     return render(request, "auctions/index.html")
 
 def login_view(request):
