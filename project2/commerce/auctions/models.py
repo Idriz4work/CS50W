@@ -34,3 +34,10 @@ class AuctionListing(models.Model):
 
     def __str__(self):
         return f"{self.user}: {self.item_name} and {self.item_count } to {self.price}"
+    
+class auctions_user(models.Model):
+    username = models.TextField()
+    password = models.TextField()
+
+    def __str__(self):
+        return f"{self.username}: and {self.password}"

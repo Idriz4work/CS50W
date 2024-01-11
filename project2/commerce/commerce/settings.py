@@ -120,3 +120,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# settings.py
+
+# ...
+
+# Use BigAutoField as the default primary key type for all models
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
