@@ -26,20 +26,18 @@
     <h2>Successfully created!</h2>
         <ul>
             {% for ar in articles %}
-            <p>Visit your new page !</p>
-            <a href="{% url'' %}">{ar.title}</a>
+            <p>Visit your new page!</p>
+            <a href="{% url 'page' %}">{{ ar.title }}</a>
             {% endfor %}
         </ul>
-        {% else %}
+    {% else %}
         <form method="post" action="{% url 'create' %}">
             {% csrf_token %}
             <label for="title">Enter Title:</label>
-            
             <input name="title" class="title" placeholder="enter Title">
             <textarea name="textar" class="textar" rows="4" cols="50"></textarea>
             <button type="submit">Save</button>
         </form>
-    </form>
     {% endif %}
 </div>
 {% endblock %}

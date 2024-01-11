@@ -43,7 +43,6 @@ def create_new(request):
     if request.method == "POST":
         titles = request.POST.get("title", "")
         text = request.POST.get("textar", "")
-        #user_id = request.session.get("user_id")
 
         if text and titles not in request.session:
             request.session[titles] = []  # Use titles as the key
@@ -62,7 +61,6 @@ def create_new(request):
                 "articles": articles
             })
         else:
-            request.session["title"] = [] 
             return render(request, "encyclopedia/create.html", {
                 "articles": []  # Empty list if there is an issue
             })
