@@ -10,7 +10,10 @@ from .models import User
 
 @login_required
 def index(request):
-    return render(request, "auctions/index.html")
+    is_authenticated = True
+    return render(request, "auctions/index.html",{
+        'is_authenticated': is_authenticated
+    })
 
 @login_required
 def login_view(request):
