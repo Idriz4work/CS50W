@@ -26,8 +26,8 @@
     <h2>Successfully created!</h2>
         <ul>
             {% for ar in articles %}
-            <p>Visit your new page!</p>
-            <a href="{% url 'page' %}">{{ ar.title }}</a>
+                <p>Visit your new page!</p>
+                <a href="{% url 'page' %}">{{ ar.title }}</a>
             {% endfor %}
         </ul>
     {% else %}
