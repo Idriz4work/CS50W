@@ -67,3 +67,13 @@ def register(request):
         return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "auctions/register.html")
+
+
+@login_required
+def watchlist(request):
+    return render(request, "watchlist.html")
+
+
+@login_required
+def categories(request):
+    return redner(request, "categories.html")

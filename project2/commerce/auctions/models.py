@@ -3,19 +3,21 @@ from django.db import models
 
 
 class User(AbstractUser):
-    username = models.CharField(max_length=64)
-    is_authenticated = models.BooleanField(True)
+    # No need to redefine username, email, and password
     user_id = models.IntegerField()
 
-class comments(models.Model):
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     origin = models.CharField(max_length=64)
     duration = models.IntegerField()
 
-class bids(models.Model):
+class Bid(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     origin = models.CharField(max_length=64)
     duration = models.IntegerField()
 
-class auction_listings(models.Model):
-    item_name = models.TextField
+class AuctionListing(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    item_name = models.CharField(max_length=255)  # Adjust max length as needed
     item_count = models.IntegerField()
     price = models.IntegerField()
