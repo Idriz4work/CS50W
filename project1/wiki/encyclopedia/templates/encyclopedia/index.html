@@ -11,10 +11,10 @@
         <form method="get" action="{% url 'index' %}">
             {% csrf_token %}
             <ul>
-                {% for i in index%}
-                    {% for ran in i %}
-                        <li>Created pages title: {{ ran.title }} text: {{ ran.text_page }}</li>
-                    {% endfor %}
+                {% for i in index %}
+                    <p>Title: i.title</p>
+                    <br>
+                    <a>i.text_page</a>
                 {% endfor %}
             </ul>
         </form>
