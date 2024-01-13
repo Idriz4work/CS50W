@@ -2,6 +2,6 @@
 from django.db import models
 
 class saved_pages(models.Model):
-    title = models.TextField(max_length=64)
+    title = models.TextField()
     text_page = models.TextField()
 
