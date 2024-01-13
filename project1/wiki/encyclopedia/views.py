@@ -15,28 +15,13 @@ from .models import saved_pages  # Import your model
 
 def index(request):
     if request.method == "GET":
-        all_entries = util.list_entries()
-        if all_entries:
-            random_title = get_entry(all_entries)
-            random_content = get_entry(random_title)
-
-            # Assuming you want to display the first entry, adjust as needed
-            page = saved_pages(title=random_title, text_page=random_content)
-
-            return render(request, "encyclopedia/index.html", {
-                "index": saved_pages.objects.all()
-            })
+        return render(request, "encyclopedia/index.html", {
+            "index": saved_pages.objects.all()
+        })
     else:
-        all_entries = util.list_entries()
-        if all_entries:
-            random_title = get_entry(all_entries)
-            random_content = get_entry(random_title)
 
-            # Assuming you want to display the first entry, adjust as needed
-            page = saved_pages(title=random_title, text_page=random_content)
-
-            return render(request, "encyclopedia/index.html", {
-                "index": util.list_entries()
+       return render(request, "encyclopedia/index.html", {
+            "index": saved_pages.objects.all()
             })
         
 def create_new(request):
