@@ -2,10 +2,16 @@ textarea {
     min-height: 400px;
 }
 
-#navbar {
+#navbar button{
     background-color: rgb(123, 180, 201);
     color: rgb(0, 0, 0);
     border: 1px black solid;
     margin: 5px;
     padding: 5px;
+}
+
+#navbar button:hover {
+    background-color: red;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 0 ridge;
 }
