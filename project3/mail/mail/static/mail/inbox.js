@@ -31,3 +31,21 @@ function load_mailbox(mailbox) {
   // Show the mailbox name
   document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
 }
+
+
+function send(mailbox) {
+  const subject = document.querySelector('#compose-subject').value;
+  const body = document.querySelector('#compose-compose-body').value;
+  const recipient = document.querySelector('#compose-recipients').value;
+
+  document.querySelector('#sent').onsubmit = false;
+
+  if (document.querySelector('#sent').onsubmit) {
+    // The condition above is enough to check if onsubmit is truthy.
+    // Assuming you want to check if subject, body, and recipient have values,
+    // you can modify the condition as follows:
+    if (subject && body && recipient) {
+      document.querySelector('#sent').addEventListener('click', () => load_mailbox('sent'));
+    }
+  }
+}
