@@ -57,3 +57,22 @@ fetch('/emails', {
     console.log(result);
 });
 
+// put emails to make change atributes ex arcieved = true 
+fetch('/emails/100', {
+  method: 'PUT',
+  body: JSON.stringify({
+      archived: true
+  })
+})
+// This code creates a new div element, sets its innerHTML, adds an event handler to run a particular function when that div is clicked on
+const element = document.createElement('div');
+element.innerHTML = 'This is the content of the div.';
+element.addEventListener('click', function() {
+    console.log('This element has been clicked!')
+});
+document.querySelector('#container').append(element); // change container to qqueryselector to what you want to chose
+
+// to loop an array use "forEach"
+
+//Django requires a CSRF token to guard against potential cross-site request forgery attacks. For this project, we’ve intentionally made the API
+// routes CSRF-exempt, so you won’t need a token. In a real-world project, though, always best to guard against such potential vulnerabilities!
