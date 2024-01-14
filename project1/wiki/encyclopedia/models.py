@@ -5,3 +5,5 @@ class saved_pages(models.Model):
     title = models.TextField()
     text_page = models.TextField()
 
+    def __str__(self):
+        return self.title
