@@ -1,3 +1,11 @@
 textarea {
     min-height: 400px;
 }
+
+#navbar {
+    background-color: rgb(123, 180, 201);
+    color: rgb(0, 0, 0);
+    border: 1px black solid;
+    margin: 5px;
+    padding: 5px;
+}
