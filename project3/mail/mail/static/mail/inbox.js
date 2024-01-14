@@ -31,3 +31,29 @@ function load_mailbox(mailbox) {
   // Show the mailbox name
   document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
 }
+
+// to get emails 
+fetch('/emails/inbox')
+.then(response => response.json())
+.then(emails => {
+    // Print emails
+    console.log(emails);
+
+    // ... do something else with emails ...
+});
+
+// For posting emails 
+fetch('/emails', {
+  method: 'POST',
+  body: JSON.stringify({
+      recipients: 'baz@example.com',
+      subject: 'Meeting time',
+      body: 'How about we meet tomorrow at 3pm?'
+  })
+})
+.then(response => response.json())
+.then(result => {
+    // Print result
+    console.log(result);
+});
+
