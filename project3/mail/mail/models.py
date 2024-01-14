@@ -27,3 +27,8 @@ class Email(models.Model):
             "read": self.read,
             "archived": self.archived
         }
+
+
+class mail_user(models.Model):
+    email = models.EmailField()
+    password = models.TextField()
