@@ -7,7 +7,7 @@ from django.shortcuts import HttpResponse, HttpResponseRedirect, render
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 
-from .models import User, Email
+from .models import User, Email, mail_user
 
 
 def index(request):
@@ -177,3 +177,15 @@ def register(request):
         return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "mail/register.html")
+
+
+@login_required
+def send_emails(request):
+
+    if request.method == "POST":
+        emails = Email.objects.all()
+        return render(request, "mail/mailbox_sent.html",{
+            "email": emails
+        })
+    else:
+        return render(request, "mail/mailbox_sent.html")

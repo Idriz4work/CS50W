@@ -32,3 +32,5 @@ class Email(models.Model):
 class mail_user(models.Model):
     email = models.EmailField()
     password = models.TextField()
+    mail = models.TextField()
+    
