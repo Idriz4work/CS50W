@@ -177,15 +177,3 @@ def register(request):
         return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "mail/register.html")
-
-
-@login_required
-def send_emails(request):
-
-    if request.method == "POST":
-        emails = Email.objects.all()
-        return render(request, "mail/mailbox_sent.html",{
-            "email": emails
-        })
-    else:
-        return render(request, "mail/mailbox_sent.html")
