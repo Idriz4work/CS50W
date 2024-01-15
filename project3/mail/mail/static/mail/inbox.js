@@ -65,6 +65,6 @@ function archieved_emails(mailbox){
 
       // ... do something else with email ...
       document.addEventListener('').display(email.body, email.sender, email.subject)
-      
+      document.DOM
   });
 }
