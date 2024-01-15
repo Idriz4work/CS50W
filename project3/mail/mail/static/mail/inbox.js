@@ -49,3 +49,15 @@ function send(mailbox) {
     }
   }
 }
+
+function archieved_emails(mailbox){
+      //get emails
+    fetch('/emails/100')
+    .then(response => response.json())
+    .then(email => {
+        // Print email
+        console.log(email);
+
+        // ... do something else with email ...
+    });
+}
