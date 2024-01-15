@@ -51,14 +51,18 @@ function send(mailbox) {
 }
 
 function archieved_emails(mailbox){
-      //get emails
-    fetch('/emails/100')
-    .then(response => response.json())
-    .then(email => {
-        // Print email
-        
-        console.log(email);
+  //get emails
+  fetch('/emails/100')
+  .then(response => response.json())
+  .then(email => {
+      // Print email
+      console.log(email);
 
-        // ... do something else with email ...
-    });
+      // Update HTML with the received email
+      document.getElementById('compose-recipients').value = email.sender;
+      document.getElementById('compose-subject').value = email.subject;
+      document.getElementById('compose-body').value = email.body;
+
+      // ... do something else with email ...
+  });
 }
