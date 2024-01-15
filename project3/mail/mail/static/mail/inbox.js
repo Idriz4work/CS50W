@@ -51,10 +51,10 @@ function send(mailbox) {
 }
 
 function archieved_emails(mailbox){
-  //get emails
-  fetch('/emails/100')
-  .then(response => response.json())
-  .then(email => {
+    //get emails
+    fetch('/emails/100')
+    .then(response => response.json())
+    .then(email => {
       // Print email
       console.log(email);
 
@@ -64,5 +64,6 @@ function archieved_emails(mailbox){
       document.getElementById('compose-body').value = email.body;
 
       // ... do something else with email ...
+      document.addEventListener('').display(email.body, email.sender, email.subject)
   });
 }
