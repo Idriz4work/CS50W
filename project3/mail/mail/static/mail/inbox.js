@@ -56,6 +56,7 @@ function archieved_emails(mailbox){
     .then(response => response.json())
     .then(email => {
         // Print email
+        
         console.log(email);
 
         // ... do something else with email ...
