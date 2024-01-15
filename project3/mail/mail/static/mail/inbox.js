@@ -63,7 +63,8 @@ function archieved_emails(mailbox){
       document.getElementById('compose-subject').value = email.subject;
       document.getElementById('compose-body').value = email.body;
 
-      // ... do something else with email ..
+      // ... do something else with email ...
       document.addEventListener('').display(email.body, email.sender, email.subject)
+      
   });
 }
