@@ -4,10 +4,10 @@
 {% block body %}
     <h2>{{ request.user.email }}</h2>
     <div id="navbar">
-        <button class="btn btn-sm btn-outline-primary" id="inbox">Inbox</button>
-        <button class="btn btn-sm btn-outline-primary" id="compose">Compose</button>
-        <button class="btn btn-sm btn-outline-primary" id="sent">Sent</button>
-        <button class="btn btn-sm btn-outline-primary" id="archived">Archived</button>
+        <button class="btn btn-sm btn-outline-primary" href="{% url '' %}" id="inbox">Inbox</button>
+        <button class="btn btn-sm btn-outline-primary" href="{% url 'compose' %}" id="compose">Compose</button>
+        <button class="btn btn-sm btn-outline-primary" href="{% url 'sent' %}" id="sent">Sent</button>
+        <button class="btn btn-sm btn-outline-primary" href="{% url 'archieved' %}" id="archived">Archived</button>
         <a class="btn btn-sm btn-outline-primary" href="{% url 'logout' %}">Log Out</a>
     </div>
     <hr>
@@ -32,23 +32,6 @@
         </form>
     </div>
     <div id="emails-view">
-    </div>
-
-    <div id="archieve-view">
-        <h3>New Email</h3>
-        <form id="compose-form">
-            <div class="form-group">
-                From: <input disabled class="form-control" value="{{ request.user.email }}">
-            </div>
-            <div class="form-group">
-                To: <input id="compose-recipients" class="form-control">
-            </div>
-            <div class="form-group">
-                <a href="">{{ request.user.email }}</a>
-            </div>
-            <textarea class="form-control" id="compose-body" placeholder="Body"></textarea>
-            <a href="">{{ request.user.email }}</a>
-        </form>
     </div>
     <div id="emails-view">
     </div>
