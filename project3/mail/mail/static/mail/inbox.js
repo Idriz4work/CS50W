@@ -103,3 +103,14 @@ function show_pages(){
         showpage(this.dataset.page);}
     })
 }
+
+function scroll(mailbox){
+  window.onscroll = () => {
+    if(window.innerHeight + window.scrollY >= document.body.offsetHeight){
+      document.querySelector('body').style.background = 'white';
+    }
+    else{
+      document.querySelector('body').style.background = '#333';
+    }
+  }
+}
