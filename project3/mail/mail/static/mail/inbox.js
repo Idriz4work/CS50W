@@ -99,8 +99,7 @@ function show_pages(){
     document.querySelector('#send-view').style.display = 'block';
 
     document.querySelectorAll('.btn btn-sm btn-outline-primary').forEach(botton{
-      botton.onclick = function(){
-        showpage(this.dataset.page);
-        
+        botton.onclick = function(){
+        showpage(this.dataset.page);}
     })
 }
