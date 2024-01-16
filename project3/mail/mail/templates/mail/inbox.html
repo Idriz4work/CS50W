@@ -4,10 +4,10 @@
 {% block body %}
     <h2>{{ request.user.email }}</h2>
     <div id="navbar">
-        <button class="btn btn-sm btn-outline-primary" href="{% url '' %}" id="inbox">Inbox</button>
-        <button class="btn btn-sm btn-outline-primary" href="{% url 'compose' %}" id="compose">Compose</button>
-        <button class="btn btn-sm btn-outline-primary" href="{% url 'sent' %}" id="sent">Sent</button>
-        <button class="btn btn-sm btn-outline-primary" href="{% url 'archieved' %}" id="archived">Archived</button>
+        <button class="btn btn-sm btn-outline-primary" id="inbox">Inbox</button>
+        <button class="btn btn-sm btn-outline-primary" id="compose">Compose</button>
+        <button class="btn btn-sm btn-outline-primary" id="sent">Sent</button>
+        <button class="btn btn-sm btn-outline-primary" id="archived">Archived</button>
         <a class="btn btn-sm btn-outline-primary" href="{% url 'logout' %}">Log Out</a>
     </div>
     <hr>
@@ -33,6 +33,7 @@
     </div>
     <div id="emails-view">
     </div>
+
     <div id="emails-view">
     </div>
 
