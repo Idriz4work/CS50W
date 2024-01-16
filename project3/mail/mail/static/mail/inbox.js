@@ -93,6 +93,8 @@ document.getElementById("sent").addEventListener("click", function() {
 });
 
 function show_pages(){
-  
+    document.querySelectorAll('div').forEach(div => { // the => is NOT ARROW/POINTER its a shorthand for making a FUNCTION
+      div.style.display = 'none';
+    })
     document.querySelector('#send-view').style.display = 'block';
 }
