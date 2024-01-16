@@ -11,32 +11,38 @@
         <a class="btn btn-sm btn-outline-primary" href="{% url 'logout' %}">Log Out</a>
     </div>
     <hr>
-    {{%if request.method == POST%}}
-    <div id="emails-view">
-    </div>
 
-    <div id="sent-view">
-        <h3>Sent Email</h3>
-        <form id="compose-form">
-            <div class="form-group">
-                From: <input disabled class="form-control" value="{{ request.user.email }}">
-            </div>
-            <div class="form-group">
-                To: <input id="compose-recipients" class="form-control">
-            </div>
-            <div class="form-group">
-                <input class="form-control" id="compose-subject" placeholder="Subject">
-            </div>
-            <textarea class="form-control" id="compose-body" placeholder="Body"></textarea>
-            <input type="submit" class="btn btn-primary"/>
-        </form>
-    </div>
+    {% if request.method == "POST" %}
+        <div id="emails-view">
+        </div>
 
-    {else}
+        <div id="sent-view">
+            <h3>Sent Email</h3>
+            <form id="compose-form">
+                <div class="form-group">
+                    From: <input disabled class="form-control" value="{{ request.user.email }}">
+                </div>
+                <div class="form-group">
+                    To: <input id="compose-recipients" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" id="compose-subject" placeholder="Subject">
+                </div>
+                <textarea class="form-control" id="compose-body" placeholder="Body"></textarea>
+                <input type="submit" class="btn btn-primary"/>
+            </form>
+        </div>
 
-    {endif}
+    {% else %}
+
+        <p>
+            The page you wanted to access isn't opening.
+        </p>
+
+    {% endif %}
 
 {% endblock %}
+
 
 {% block script %}
     <script src="{% static 'mail/inbox.js' %}"></script>
