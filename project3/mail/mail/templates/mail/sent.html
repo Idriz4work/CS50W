@@ -11,7 +11,7 @@
         <a class="btn btn-sm btn-outline-primary" href="{% url 'logout' %}">Log Out</a>
     </div>
     <hr>
-
+    {{%if request.method == POST%}}
     <div id="emails-view">
     </div>
 
@@ -31,7 +31,11 @@
             <input type="submit" class="btn btn-primary"/>
         </form>
     </div>
-    
+
+    {else}
+
+    {endif}
+
 {% endblock %}
 
 {% block script %}
