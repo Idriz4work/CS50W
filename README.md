@@ -19,7 +19,7 @@ Introduction to SQL, Models and Migrations in django
 Introduction to client-side programming using JavaScript. Manipulating the DOM, handling events.
 
 ## Week 6: User Interfaces: 
-More on JavaScript, AJAX for asynchronous communication
+More on JavaScript, AJAX for asynchronous communication, Introduction to React Framework
 
 ## Week 7:Testing, CI/CD:
 Writing tests for your code, continuous integration, and deployment.
