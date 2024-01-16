@@ -81,3 +81,13 @@ function Selection(){
       });
     });
 }
+
+document.getElementById("sent").addEventListener("click", function() {
+  // Assuming you are using Fetch API to load content
+  fetch("{% url 'sent' %}")
+      .then(response => response.text())
+      .then(data => {
+          document.getElementById("content-container").innerHTML = data;
+      })
+      .catch(error => console.error("Error fetching content:", error));
+});
