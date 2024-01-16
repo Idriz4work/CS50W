@@ -97,4 +97,9 @@ function show_pages(){
       div.style.display = 'none';
     })
     document.querySelector('#send-view').style.display = 'block';
+
+    document.querySelectorAll('.btn btn-sm btn-outline-primary').forEach(botton{
+      botton.onclick = function(){
+        show_pages(this.data)
+    })
 }
