@@ -100,6 +100,7 @@ function show_pages(){
 
     document.querySelectorAll('.btn btn-sm btn-outline-primary').forEach(botton{
       botton.onclick = function(){
-        show_pages(this.data)
+        showpage(this.dataset.page);
+        
     })
 }
