@@ -26,6 +26,8 @@ function load_mailbox(mailbox) {
   
   // Show the mailbox and hide other views
   document.querySelector('#emails-view').style.display = 'block';
+  document.querySelector('#archieve-view').style.display = 'block';
+  document.querySelector('#sent-view').style.display = 'block';
   document.querySelector('#compose-view').style.display = 'none';
 
   // Show the mailbox name
@@ -67,4 +69,15 @@ function archieved_emails(mailbox){
       document.addEventListener('').display(email.body, email.sender, email.subject)
       document.DOCUMENT_FRAGMENT_NODE
   });
+}
+
+function Selection(){
+  
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('button').forEach(function(button) {
+          button.onclick = function() {
+              document.querySelector("#hello").style.color = button.dataset.color;
+          }
+      });
+    });
 }
