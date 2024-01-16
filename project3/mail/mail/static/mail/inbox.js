@@ -91,3 +91,8 @@ document.getElementById("sent").addEventListener("click", function() {
       })
       .catch(error => console.error("Error fetching content:", error));
 });
+
+function show_pages(){
+  
+    document.querySelector('#send-view').style.display = 'block';
+}
