@@ -106,13 +106,31 @@ function showSection(section) {
   .then(response => response.text())
   .then(text => {
       console.log(text);
-      document.querySelector('#sent-view').innerHTML = sent;
       document.querySelector('#archieved-view').innerHTML = archieve;
-      document.querySelector('#inbox-view').innerHTML = inbox;
-  });
-
+    });    
 }
 
+function showSection(section) {
+  fetch(`/sections/${section}`)
+  .then(response => response.text())
+  .then(text => {
+      console.log(text);
+      document.querySelector('#sent-view').innerHTML = sent;
+    });
+    
+}
+
+function showSection(section) {
+  fetch(`/sections/${section}`)
+  .then(response => response.text())
+  .then(text => {
+      console.log(text);
+      document.querySelector('#inbox-view').innerHTML = inbox;
+    });
+}
+  
+  
+  
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('#sent').forEach(button => {
       button.onclick = function() {
