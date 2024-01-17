@@ -106,7 +106,9 @@ function showSection(section) {
   .then(response => response.text())
   .then(text => {
       console.log(text);
-      document.querySelector('#sent-view').innerHTML = text;
+      document.querySelector('#sent-view').innerHTML = sent;
+      document.querySelector('#archieved-view').innerHTML = archieve;
+      document.querySelector('#inbox-view').innerHTML = inbox;
   });
 
 }
@@ -122,3 +124,28 @@ document.addEventListener('DOMContentLoaded', function() {
       };
   });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('#archived').forEach(button => {
+      button.onclick = function() {
+          const section = this.dataset.section;
+
+          // Add the current state to the history
+          history.pushState({section: section}, "", `section${section}`);
+          showSection(section);
+      };
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('#inbox').forEach(button => {
+      button.onclick = function() {
+          const section = this.dataset.section;
+
+          // Add the current state to the history
+          history.pushState({section: section}, "", `section${section}`);
+          showSection(section);
+      };
+  });
+});
+
