@@ -149,7 +149,8 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-
+// TO FIX ANY GIT PUSH ERRORS 
+//---------------------------------//
 // First, fetch the changes from the remote repository
 // git fetch origin main
 
