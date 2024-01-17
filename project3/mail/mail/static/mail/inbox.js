@@ -101,7 +101,7 @@ window.onpopstate = function(event) {
   showSection(event.state.section);
 }
 
-function showSection(section) {
+function showSection-archieve(section) {
   fetch(`/sections/${section}`)
   .then(response => response.text())
   .then(text => {
@@ -110,7 +110,7 @@ function showSection(section) {
     });    
 }
 
-function showSection(section) {
+function showSection-sent(section) {
   fetch(`/sections/${section}`)
   .then(response => response.text())
   .then(text => {
@@ -120,7 +120,7 @@ function showSection(section) {
     
 }
 
-function showSection(section) {
+function showSection-in(section) {
   fetch(`/sections/${section}`)
   .then(response => response.text())
   .then(text => {
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
           // Add the current state to the history
           history.pushState({section: section}, "", `section${section}`);
-          showSection(section);
+          showSection-sent(section);
       };
   });
 });
@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
           // Add the current state to the history
           history.pushState({section: section}, "", `section${section}`);
-          showSection(section);
+          showSection-archieve(section);
       };
   });
 });
