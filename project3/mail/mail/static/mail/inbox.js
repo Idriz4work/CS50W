@@ -71,26 +71,6 @@ function archieved_emails(mailbox){
   });
 }
 
-function Selection(){
-  
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('button').forEach(function(button) {
-          button.onclick = function() {
-              document.querySelector("#hello").style.color = button.dataset.color;
-          }
-      });
-    });
-}
-
-document.getElementById("sent").addEventListener("click", function() {
-  // Assuming you are using Fetch API to load content
-  fetch("{% url 'sent' %}")
-      .then(response => response.text())
-      .then(data => {
-          document.getElementById("content-container").innerHTML = data;
-      })
-      .catch(error => console.error("Error fetching content:", error));
-});
 
 function show_pages(){
     document.querySelectorAll('div').forEach(div => { // the => is NOT ARROW/POINTER its a shorthand for making a FUNCTION
@@ -114,3 +94,31 @@ function scroll(mailbox){
     }
   }
 }
+
+// When back arrow is clicked, show previous section
+window.onpopstate = function(event) {
+  console.log(event.state.section);
+  showSection(event.state.section);
+}
+
+function showSection(section) {
+  fetch(`/sections/${section}`)
+  .then(response => response.text())
+  .then(text => {
+      console.log(text);
+      document.querySelector('#content').innerHTML = text;
+  });
+
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('button').forEach(button => {
+      button.onclick = function() {
+          const section = this.dataset.section;
+
+          // Add the current state to the history
+          history.pushState({section: section}, "", `section${section}`);
+          showSection(section);
+      };
+  });
+});
