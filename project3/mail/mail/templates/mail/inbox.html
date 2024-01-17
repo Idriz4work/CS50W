@@ -35,14 +35,14 @@
         <div id="emails-view">
         </div>
 
-        <div id="sent-view">
+        <div id="compose-recipients">
             <h3>Sented Email</h3>
             <form>
-                <a>SENDER:{request.user.email}</a>
+                <a >SENDER:{request.user.email}</a>
                 <br>
                 <a>Recipient:{request.user.recipient}</a>
                 <br>
-                <a>Subject: {request.user.subject}</a>
+                <a id="compose-subject">Subject: {request.user.subject}</a>
                 <a>Body : {request.user.body}</a>
             </form>
         </div>
@@ -50,18 +50,13 @@
         <div id="emails-view-archieved">
             <div id="archieve-view">
                 <h3>Old Email</h3>
-                <form id="compose-form">
-                    <div class="form-group">
-                        From: <input disabled class="form-control" value="{{ request.user.email }}">
-                    </div>
-                    <div class="form-group">
-                        To: <input id="compose-recipients" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" id="compose-subject" placeholder="Subject">
-                    </div>
-                    <textarea class="form-control" id="compose-body" placeholder="Body"></textarea>
-                    <input type="submit" class="btn btn-primary"/>
+                <form>
+                    <a >SENDER:{request.user.email}</a>
+                    <br>
+                    <a>Recipient:{request.user.recipient}</a>
+                    <br>
+                    <a id="compose-subject">Subject: {request.user.subject}</a>
+                    <a>Body : {request.user.body}</a>
                 </form>
             </div>
         </div>
