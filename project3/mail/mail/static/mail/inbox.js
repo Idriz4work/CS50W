@@ -106,13 +106,13 @@ function showSection(section) {
   .then(response => response.text())
   .then(text => {
       console.log(text);
-      document.querySelector('#content').innerHTML = text;
+      document.querySelector('#sent-view').innerHTML = text;
   });
 
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('button').forEach(button => {
+  document.querySelectorAll('#sent').forEach(button => {
       button.onclick = function() {
           const section = this.dataset.section;
 
