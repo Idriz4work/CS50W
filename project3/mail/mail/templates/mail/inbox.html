@@ -33,22 +33,19 @@
         </form>
     </div>
     
-        <div id="emails-view">
-        </div>
-
-        <div id="sent-view">
-            <h3>Sented Email</h3>
-            <form>
-                <a id="compose-subject">Subject: {request.user.subject}</a>
-                <br>
-                <a id="compose-subject">SENDER: {{ email.sender.email }}</a>
-                <br>
-                <a>Recipient: {{ email.recipients.all.0.email }}</a>
-                <br>
-                <a id="compose-subject">Subject: {{ email.subject }}</a>
-                <a>Body: {{ email.body }}</a>
-            </form>
-        </div>
+    <div id="sent-view">
+        <h3>Sent Email</h3>
+        <form>
+            <a id="sent-subject">Subject: {{ email.subject }}</a>
+            <br>
+            <a id="sent-sender">Sender: {{ email.sender.email }}</a>
+            <br>
+            <a>Recipient: {{ email.recipients.all.0.email }}</a>
+            <br>
+            <a id="sent-body">Body: {{ email.body }}</a>
+        </form>
+    </div>
+    
 {% endblock %}
 
 {% block script %}
