@@ -41,7 +41,7 @@
             <form>
                 <a id="compose-subject">Subject: {request.user.subject}</a>
                 <br>
-                <a>SENDER: {{ email.sender.email }}</a>
+                <a id="compose-subject">SENDER: {{ email.sender.email }}</a>
                 <br>
                 <a>Recipient: {{ email.recipients.all.0.email }}</a>
                 <br>
