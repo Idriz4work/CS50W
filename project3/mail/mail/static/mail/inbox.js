@@ -48,6 +48,7 @@ function send(mailbox) {
     // you can modify the condition as follows:
     if (subject && body && recipient) {
       document.querySelector('#sent').addEventListener('click', () => load_mailbox('sent'));
+      
     }
   }
 }
@@ -71,27 +72,6 @@ function archieved_emails(mailbox){
   });
 }
 
-// Shows one page and hides the other two
-function showPage(page) {
+function mails_sended(mailbox){
 
-  // Hide all of the divs:
-  document.querySelectorAll('div').forEach(div => {
-      div.style.display = 'none';
-  });
-
-  // Show the div provided in the argument
-  document.querySelector(`#${page}`).style.display = 'block';
 }
-
-// Wait for page to loaded:
-document.addEventListener('DOMContentLoaded', function() {
-
-  // Select all buttons
-  document.querySelectorAll('.btn btn-sm btn-outline-primary')forEach(button => {
-
-      // When a button is clicked, switch to that page
-      button.onclick = function() {
-        showPage(this.id);
-    }    
-  })
-});
