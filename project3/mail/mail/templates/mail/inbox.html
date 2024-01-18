@@ -39,12 +39,13 @@
         <div id="sent-view">
             <h3>Sented Email</h3>
             <form>
-                <a >SENDER:{request.user.email}</a>
-                <br>
-                <a>Recipient:{request.user.recipient}</a>
-                <br>
                 <a id="compose-subject">Subject: {request.user.subject}</a>
-                <a>Body : {request.user.body}</a>
+                <a>SENDER: {{ email.sender.email }}</a>
+                <br>
+                <a>Recipient: {{ email.recipients.all.0.email }}</a>
+                <br>
+                <a id="compose-subject">Subject: {{ email.subject }}</a>
+                <a>Body: {{ email.body }}</a>
             </form>
         </div>
 
