@@ -167,27 +167,25 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// Shows one page and hides the other two
-function showPage(page) {
-
-  // Hide all of the divs:
-  document.querySelectorAll('div').forEach(div => {
-      div.style.display = 'none';
-  });
-
-  // Show the div provided in the argument
-  document.querySelector(`#${page}`).style.display = 'block';
-}
-
-// Wait for page to loaded:
+// Wait for page to load:
 document.addEventListener('DOMContentLoaded', function() {
 
-  // Select all buttons
-  document.querySelectorAll('.btn.btn-sm.btn-outline-primary')forEach(button => {
+  // Function to show/hide elements based on button click
+  function showPage(page) {
+    // Hide all divs
+    document.querySelectorAll('div').forEach(div => {
+      div.style.display = 'none';
+    });
+    // Show the specified div
+    document.querySelector(`#${page}-view`).style.display = 'block';
+  }
 
-      // When a button is clicked, switch to that page
-      button.onclick = function() {
-        showPage(this.id);
-    }    
-  })
+  // Select all buttons
+  document.querySelectorAll('.btn.btn-sm.btn-outline-primary').forEach(button => {
+    // When a button is clicked, switch to that page
+    button.onclick = function() {
+      showPage(this.getAttribute('data-page'));
+    }
+  });
+
 });
