@@ -183,11 +183,11 @@ function showPage(page) {
 document.addEventListener('DOMContentLoaded', function() {
 
   // Select all buttons
-  document.querySelectorAll('.btn btn-sm btn-outline-primary').forEach(button => {
+  document.querySelectorAll('.btn.btn-sm.btn-outline-primary')forEach(button => {
 
       // When a button is clicked, switch to that page
       button.onclick = function() {
-          showPage(this.dataset.page);
-      }
+        showPage(this.id);
+    }    
   })
 });
