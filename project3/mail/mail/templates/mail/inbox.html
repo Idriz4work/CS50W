@@ -40,6 +40,7 @@
             <h3>Sented Email</h3>
             <form>
                 <a id="compose-subject">Subject: {request.user.subject}</a>
+                <br>
                 <a>SENDER: {{ email.sender.email }}</a>
                 <br>
                 <a>Recipient: {{ email.recipients.all.0.email }}</a>
