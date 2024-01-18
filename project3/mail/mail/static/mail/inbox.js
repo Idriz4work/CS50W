@@ -71,121 +71,27 @@ function archieved_emails(mailbox){
   });
 }
 
+// Shows one page and hides the other two
+function showPage(page) {
 
-function show_pages(){
-    document.querySelectorAll('div').forEach(div => { // the => is NOT ARROW/POINTER its a shorthand for making a FUNCTION
+  // Hide all of the divs:
+  document.querySelectorAll('div').forEach(div => {
       div.style.display = 'none';
-    })
-    document.querySelector('#send-view').style.display = 'block';
-
-    document.querySelectorAll('.btn btn-sm btn-outline-primary').forEach(botton{
-        botton.onclick = function(){
-        showpage(this.dataset.page);}
-    })
-}
-
-function scroll(mailbox){
-  window.onscroll = () => {
-    if(window.innerHeight + window.scrollY >= document.body.offsetHeight){
-      document.querySelector('body').style.background = 'white';
-    }
-    else{
-      document.querySelector('body').style.background = '#333';
-    }
-  }
-}
-
-// When back arrow is clicked, show previous section
-window.onpopstate = function(event) {
-  console.log(event.state.section);
-  showSection(event.state.section);
-}
-
-function showSection_archieve(section) {
-  fetch(`/sections/${section}`)
-  .then(response => response.text())
-  .then(text => {
-      console.log(text);
-      document.querySelector('#archieved-view').innerHTML = archieve;
-    });    
-}
-
-function showSection_sent(section) {
-  fetch(`/sections/${section}`)
-  .then(response => response.text())
-  .then(text => {
-      console.log(text);
-      document.querySelector('#sent-view').innerHTML = sent;
-    });
-    
-}
-
-function showSection_in(section) {
-  fetch(`/sections/${section}`)
-  .then(response => response.text())
-  .then(text => {
-      console.log(text);
-      document.querySelector('#inbox-view').innerHTML = inbox;
-    });
-}
-  
-  
-  
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('#sent').forEach(button => {
-      button.onclick = function() {
-          const section = this.dataset.section;
-
-          // Add the current state to the history
-          history.pushState({section: section}, "", `section${section}`);
-          showSection-sent(section);
-      };
   });
-});
 
+  // Show the div provided in the argument
+  document.querySelector(`#${page}`).style.display = 'block';
+}
+
+// Wait for page to loaded:
 document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('#archived').forEach(button => {
-      button.onclick = function() {
-          const section = this.dataset.section;
-
-          // Add the current state to the history
-          history.pushState({section: section}, "", `section${section}`);
-          showSection-archieve(section);
-      };
-  });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('#inbox').forEach(button => {
-      button.onclick = function() {
-          const section = this.dataset.section;
-
-          // Add the current state to the history
-          history.pushState({section: section}, "", `section${section}`);
-          showSection(section);
-      };
-  });
-});
-
-// Wait for page to load:
-document.addEventListener('DOMContentLoaded', function() {
-
-  // Function to show/hide elements based on button click
-  function showPage(page) {
-    // Hide all divs
-    document.querySelectorAll('div').forEach(div => {
-      div.style.display = 'none';
-    });
-    // Show the specified div
-    document.querySelector(`#${page}-view`).style.display = 'block';
-  }
 
   // Select all buttons
-  document.querySelectorAll('.btn.btn-sm.btn-outline-primary').forEach(button => {
-    // When a button is clicked, switch to that page
-    button.onclick = function() {
-      showPage(this.getAttribute('data-page'));
-    }
-  });
+  document.querySelectorAll('.btn btn-sm btn-outline-primary')forEach(button => {
 
+      // When a button is clicked, switch to that page
+      button.onclick = function() {
+        showPage(this.id);
+    }    
+  })
 });
