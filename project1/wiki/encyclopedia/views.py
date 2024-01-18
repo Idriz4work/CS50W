@@ -18,10 +18,9 @@ def index(request):
             "index": saved_pages.objects.all()
         })
     else:
-
-       return render(request, "encyclopedia/index.html", {
+        return render(request, "encyclopedia/index.html", {
             "index": saved_pages.objects.all()
-            })
+        })
         
 def create_new(request):
     if request.method == "POST":
@@ -68,7 +67,7 @@ def random_page(request):
         return render(request, "encyclopedia/random.html")
 
 
-def new_page(request):
+def Search(request):
     all_entries = util.list_entries()
     title = all_entries
     content = title
@@ -83,5 +82,5 @@ def new_page(request):
         page = saved_pages(title=title, text_page=content)
 
         return render(request,"encyclopedia/newpage.html",{
-            "save": util.get_entry() 
+            "save": util.list_entries() 
         })

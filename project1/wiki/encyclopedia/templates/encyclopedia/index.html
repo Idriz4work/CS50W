@@ -5,17 +5,18 @@
 {% endblock %}
 
 {% block body %}
+<body id="index">
     <h1>All Pages</h1>
     {% if request.method == "GET" %}
         <h2>All created pages</h2>
         <form method="get" action="{% url 'index' %}">
             {% csrf_token %}
             <ul>
-                
-                    <p>Title: i.title</p>
-                    <br>
-                    <a>i.text_page</a>
-                
+            {% for i in index %}
+                <p>Title: {{ i.title }}</p>
+                <br>
+                <a>{{ i.text_page }}</a>
+            {% endfor %}
             </ul>
         </form>
     {% else %}
@@ -26,3 +27,4 @@
         </form>
     {% endif %}
 {% endblock %}
+</body>
