@@ -101,7 +101,7 @@ window.onpopstate = function(event) {
   showSection(event.state.section);
 }
 
-function showSection-archieve(section) {
+function showSection_archieve(section) {
   fetch(`/sections/${section}`)
   .then(response => response.text())
   .then(text => {
@@ -110,7 +110,7 @@ function showSection-archieve(section) {
     });    
 }
 
-function showSection-sent(section) {
+function showSection_sent(section) {
   fetch(`/sections/${section}`)
   .then(response => response.text())
   .then(text => {
@@ -120,7 +120,7 @@ function showSection-sent(section) {
     
 }
 
-function showSection-in(section) {
+function showSection_in(section) {
   fetch(`/sections/${section}`)
   .then(response => response.text())
   .then(text => {
@@ -165,4 +165,29 @@ document.addEventListener('DOMContentLoaded', function() {
           showSection(section);
       };
   });
+});
+
+// Shows one page and hides the other two
+function showPage(page) {
+
+  // Hide all of the divs:
+  document.querySelectorAll('div').forEach(div => {
+      div.style.display = 'none';
+  });
+
+  // Show the div provided in the argument
+  document.querySelector(`#${page}`).style.display = 'block';
+}
+
+// Wait for page to loaded:
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Select all buttons
+  document.querySelectorAll('button').forEach(button => {
+
+      // When a button is clicked, switch to that page
+      button.onclick = function() {
+          showPage(this.dataset.page);
+      }
+  })
 });
