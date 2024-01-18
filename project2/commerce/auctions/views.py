@@ -3,17 +3,13 @@ from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-from django.contrib.auth.decorators import login_required
 
-from .models import User, Comment, AuctionListing, Bid
+from .models import User
 
-@login_required
+
 def index(request):
-    is_authenticated = True
-    if request.method == "POST":
-        return render(request, "auctions/index.html")
-    
     return render(request, "auctions/index.html")
+
 
 def login_view(request):
     if request.method == "POST":
@@ -35,7 +31,6 @@ def login_view(request):
         return render(request, "auctions/login.html")
 
 
-@login_required
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse("index"))
@@ -66,20 +61,3 @@ def register(request):
         return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "auctions/register.html")
-
-
-@login_required
-def watchlist(request):
-    item = AuctionListing.objects.get(item_name="")
-    price = AuctionListing.objects.get(price="")
-    count = AuctionListing.objects.get(item_count="")
-
-    watchlist = AuctionListing(item_name = item, item_count = count, price = price) 
-    return render(request, "auctions/watchlist.html",{
-        "watchlist":  watchlist
-    })
-
-
-@login_required
-def categories(request):
-    return render(request, "auctions/categories.html")
