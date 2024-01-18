@@ -11,11 +11,11 @@
         <form method="get" action="{% url 'index' %}">
             {% csrf_token %}
             <ul>
-                {% for i in index %}
+                
                     <p>Title: i.title</p>
                     <br>
                     <a>i.text_page</a>
-                {% endfor %}
+                
             </ul>
         </form>
     {% else %}

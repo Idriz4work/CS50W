@@ -7,7 +7,6 @@ from .util import list_entries, save_entry, get_entry
 from django.db import connection
 from django.http import HttpResponse
 from . import util
-from sqlalchemy import create_engine, MetaData
 from django.contrib.auth.decorators import login_required
 import random
 from django.urls import reverse
