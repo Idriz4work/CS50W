@@ -118,8 +118,8 @@ function mails_sended(mailbox) {
   });
 }
 
-function archive(){
-  if(document.querySelector('#archived').onclick =>{
-    render("")
-  })
+function archive() {
+  document.querySelector('#archived').onclick = function() {
+    render("achieve.html");
+  };
 }
