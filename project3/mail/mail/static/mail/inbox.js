@@ -89,7 +89,7 @@ function mails_sended(mailbox) {
       // Assuming you want to create a Mails component and render it
       function Mails(props) {
 
-        react.useState(mailbox)
+       const [formData, sender]  = react.useState()
         
         return (
           <div>
