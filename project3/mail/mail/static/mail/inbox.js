@@ -127,7 +127,7 @@ function archive() {
       recipient = document.getElementById("compose-recipients").value;
       subject = document.getElementById("compose-subject").value;
       body = document.getElementById("compose-body").value;
-      document.getElementById("").textContent = `Hello ${body}`
+      document.getElementById("Textar").textContent = `Hello ${body}, ${recipient}, ${subject}`
 }
   };
 }
