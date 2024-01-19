@@ -85,9 +85,12 @@ function mails_sended(mailbox) {
       // Assuming you want to get the data from the form
       const formData = new FormData(this);
       const sender = formData.get('sender'); // Change 'sender' to the actual name attribute of your input
-  
+      
       // Assuming you want to create a Mails component and render it
       function Mails(props) {
+
+        react.useState(mailbox)
+        
         return (
           <div>
             <h1>FROM: {props.sender}!</h1>
@@ -100,7 +103,7 @@ function mails_sended(mailbox) {
           </div>
         );
       }
-  
+      
       // Assuming you have an element with the id 'mailsContainer' to render the Mails component
       const mailbox = document.getElementById('mailbox');
       const mailsProps = {
