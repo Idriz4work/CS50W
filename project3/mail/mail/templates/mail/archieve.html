@@ -1,0 +1,31 @@
+{% extends "mail/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+    <h2>{{ request.user.email }}</h2>
+    <div id="navbar">
+        <button data-page="inbox" class="btn btn-sm btn-outline-primary" id="inbox">Inbox</button>
+        <button data-page="compose" class="btn btn-sm btn-outline-primary" id="compose">Compose</button>
+        <button data-page="sent" class="btn btn-sm btn-outline-primary" id="sent">Sent</button>
+        <button data-page="archive" class="btn btn-sm btn-outline-primary" id="archived">Archived</button>
+        <a class="btn btn-sm btn-outline-primary" href="{% url 'logout' %}">Log Out</a>
+    </div>
+    <hr>
+
+    <div id="emails-view">
+    </div>
+
+    <div id="archieve-view">
+        <h3>New Email</h3>
+        <form id="compose-form">
+            <div class="form-group">
+                {{ request.user.email }}"
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'mail/inbox.js' %}"></script>
+{% endblock %}

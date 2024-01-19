@@ -1,7 +1,7 @@
 // your_jsx_file.jsx
 import React from 'react';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM, { render } from 'react-dom';
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -115,5 +115,11 @@ function mails_sended(mailbox) {
       // Render the Mails component
       mailbox.innerHTML = '';
       mailbox.appendChild(Mails(mailsProps));
-    });
-  }
+  });
+}
+
+function archive(){
+  if(document.querySelector('#archived').onclick =>{
+    render("")
+  })
+}
