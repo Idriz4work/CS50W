@@ -129,8 +129,8 @@ function archive() {
       body = document.getElementById("compose-body").value;
       document.getElementById("Textar").textContent = `Hello ${body}, ${recipient}, ${subject}`
     }
-    <h1>FROM: {props.sender}!</h1>
-            <><br></br><h1>TO: {props.recipient}</h1><br></br><h1>Subject: {props.subject}!</h1><br></br><p>Body: {props.body}</p></>
+    <h1>FROM: {sender}!</h1>
+            <><br></br><h1>TO: {recipient}</h1><br></br><h1>Subject: {subject}!</h1><br></br><p>Body: {body}</p></>
           </div>
   };
 }
