@@ -121,5 +121,13 @@ function mails_sended(mailbox) {
 function archive() {
   document.querySelector('#archived').onclick = function() {
     render("achieve.html");
+    let body;
+
+    document.getElementById("m-sub").onsubmit = function(){
+      recipient = document.getElementById("compose-recipients").value;
+      subject = document.getElementById("compose-subject").value;
+      body = document.getElementById("compose-body").value;
+      document.getElementById("").textContent = `Hello ${body}`
+}
   };
 }
