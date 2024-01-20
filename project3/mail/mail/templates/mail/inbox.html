@@ -32,48 +32,7 @@
             <input id="m-sub" type="submit" class="btn btn-primary"/>
         </form>
     </div>
-
-    <script type="text/babel">
-        //        
-        function archive() {
-        document.querySelector('#archived').onclick = function() {
-        render("achieve.html");
-        let body;
-
-        document.getElementById("m-sub").onsubmit = function(){
-        recipient = document.getElementById("compose-recipients").value;
-        subject = document.getElementById("compose-subject").value;
-        body = document.getElementById("compose-body").value;
-        document.getElementById("Textar").textContent = `Hello ${body}, ${recipient}, ${subject}`;
-        };
-
-        // Assuming the following HTML structure inside "achieve.html"
-        // Adjust it according to your needs.
-        let jsxContent = (
-            <div id="archieved-view">
-            <h3>Archived Emails</h3>
-            <form id="compose-form">
-                <div class="form-group">
-                    FROM: {sender}!
-                </div>
-                <div class="form-group">
-                    <br /><h1>TO: {recipient}</h1><br />
-                </div>
-                <div class="form-group">
-                    <h1>Subject: {subject}!</h1><br />
-                </div>
-                <p>Body: {body}</p>
-            </form>
-            </div>
-        );
-
-        ReactDOM.render(jsxContent, document.getElementById("archived-view"));
-        
-        // Replace the content of a specific element with the HTML content
-        document.getElementById("your-target-element-id").innerHTML = htmlContent;
-    };
-    }
-    </script>
+    
     <div id=""></div>
 {% endblock %}
 

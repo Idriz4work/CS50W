@@ -123,7 +123,7 @@ function archive() {
   };
 }
 
-function send = document.getElementById("compose-form").addEventListener("submit", function(event) {
+document.getElementById("compose-form").addEventListener("submit", function(event) {
   event.preventDefault(); // Prevent the default form submission
 
   const recipient = document.getElementById("compose-recipients").value;
