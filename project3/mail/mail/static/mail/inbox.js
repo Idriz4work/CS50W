@@ -85,6 +85,19 @@ function mails_sended(mailbox) {
       // Render the Mails component
       mailbox.innerHTML = '';
       mailbox.appendChild(Mails(mailsProps));
+
+      var mail = document.createElement("div");
+      var sender = document.createElement('h5');
+      var subject = document.createElement('p');
+      var body = document.createElement('p');
+      var time = document.createElement('p');
+
+      const element = document.createElement('div');
+      element.innerHTML = 'This is the content of the div.';
+      element.addEventListener('click', function() {
+      console.log('This element has been clicked!')
+});
+document.querySelector('#container').append(element);
   });
 }
 
@@ -110,7 +123,7 @@ function archive() {
   };
 }
 
-document.getElementById("compose-form").addEventListener("submit", function(event) {
+function send = document.getElementById("compose-form").addEventListener("submit", function(event) {
   event.preventDefault(); // Prevent the default form submission
 
   const recipient = document.getElementById("compose-recipients").value;
