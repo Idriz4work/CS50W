@@ -93,16 +93,5 @@ function archive() {
       document.getElementById("Textar").textContent = `Hello ${body}, ${recipient}, ${subject}`;
     };
 
-    // Assuming the following HTML structure inside "achieve.html"
-    // Adjust it according to your needs.
-    let htmlContent = `
-      <div>
-        <h1>FROM: {sender}!</h1>
-        <br><h1>TO: ${recipient}</h1><br><h1>Subject: ${subject}!</h1><br><p>Body: ${body}</p>
-      </div>
-    `;
-
-    // Replace the content of a specific element with the HTML content
-    document.getElementById("your-target-element-id").innerHTML = htmlContent;
   };
 }
