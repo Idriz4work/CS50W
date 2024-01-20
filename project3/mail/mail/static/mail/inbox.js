@@ -19,8 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
 function compose_email() {
 
   // Show compose view and hide other views
-  document.querySelector('#emails-view').style.display = 'none';
   document.querySelector('#compose-view').style.display = 'block';
+  document.querySelector('#emails-view').style.display = 'none';
+  document.querySelector('#email-view').style.display = 'none';
 
   // Clear out composition fields
   document.querySelector('#compose-recipients').value = '';
@@ -28,7 +29,7 @@ function compose_email() {
   document.querySelector('#compose-body').value = '';
 }
 
-function load_mailbox(mailbox) {
+function load_mailbox(mailbox, props) {
   
   // Show the mailbox and hide other views
   document.querySelector('#emails-view').style.display = 'block';
@@ -41,9 +42,12 @@ function load_mailbox(mailbox) {
 }
 
 
-function mails_sended(mailbox) {
+function mail(mailbox) {
   document.getElementById("m-sub").addEventListener("submit", function (event) {
     event.preventDefault(); // Prevent the default form submission
+
+    mail_view = document.querySelector('#email-view');
+    mail_view.style.display = 'block';
 
     // Render the Mails component
     mailbox.innerHTML = '';
@@ -67,6 +71,17 @@ function mails_sended(mailbox) {
 
     document.querySelector('#container').append(element);
   });
+  return (
+    <div>
+      <h1>FROM: {props.sender}!</h1>
+      <br></br>
+      <h1>TO: {props.recipient}</h1>
+      <br></br>
+      <h1>Subject: {props.subject}!</h1>
+      <br></br>
+      <p>Body: {props.body}</p>
+    </div>
+  );
 }
 
 
@@ -91,19 +106,4 @@ function archive() {
     })
 
   };
-}
-
-function Mails(props) {
-  // Assuming you want to create a Mails component and render it
-  return (
-    <div>
-      <h1>FROM: {props.sender}!</h1>
-      <br></br>
-      <h1>TO: {props.recipient}</h1>
-      <br></br>
-      <h1>Subject: {props.subject}!</h1>
-      <br></br>
-      <p>Body: {props.body}</p>
-    </div>
-  );
 }
