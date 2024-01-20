@@ -96,8 +96,8 @@ function mails_sended(mailbox) {
       element.innerHTML = 'This is the content of the div.';
       element.addEventListener('click', function() {
       console.log('This element has been clicked!')
-});
-document.querySelector('#container').append(element);
+    });
+  document.querySelector('#container').append(element);
   });
 }
 
