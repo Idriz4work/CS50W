@@ -100,28 +100,43 @@ function archive() {
       document.getElementById("Textar").textContent = `Hello ${body}, ${recipient}, ${subject}`;
     };
 
+    fetch('/emails/100', {
+      method: 'PUT',
+      body: JSON.stringify({
+          archived: true
+      })
+    })
+
   };
 }
 
-function send(mailbox){
-  const recipient = document.getElementById("compose-recipients").value;
-  const subject = document.getElementById("compose-subject").value;
-  const body = document.getElementById("compose-body").value;
-
-  fetch('/emails', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-    recipients: recipient,
-    subject: subject,
-    body: body,
-    }),
-  })
-  .then(response => response.json())
-  .then(result => {
-    // Print result
-    console.log(result);
+document.getElementById("compose-form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent the default form submission
+  
+    const recipient = document.getElementById("compose-recipients").value;
+    const subject = document.getElementById("compose-subject").value;
+    const body = document.getElementById("compose-body").value;
+  
+    // Now you can use these variables for further processing or send them to the server
+    console.log("Recipient:", recipient);
+    console.log("Subject:", subject);
+    console.log("Body:", body);
+  
+    // Add your fetch code here to send the data to the server if needed
+    fetch('/emails', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        recipients: recipient,
+        subject: subject,
+        body: body,
+      }),
+    })
+    .then(response => response.json())
+    .then(result => {
+      // Handle the response if needed
+      console.log(result);
   });
-}
+});
