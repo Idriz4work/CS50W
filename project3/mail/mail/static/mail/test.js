@@ -41,3 +41,31 @@ fetch('/emails/100', {
       archived: true
   })
 })
+
+ // Log the form data
+ console.log("Recipient:", recipient);
+ console.log("Subject:", subject);
+ console.log("Body:", body);
+
+ // Add your fetch code here to send the data to the server if needed
+ fetch('/emails', {
+   method: 'POST',
+   headers: {
+     'Content-Type': 'application/json',
+   },
+   body: JSON.stringify({
+     recipients: recipient,
+     subject: subject,
+     body: body,
+   }),
+ })
+   .then(response => response.json())
+   .then(result => {
+     // Handle the response if needed
+     console.log(result);
+   });
+
+   
+   const recipient = document.getElementById("compose-recipients").value;
+   const subject = document.getElementById("compose-subject").value;
+   const body = document.getElementById("compose-body").value;

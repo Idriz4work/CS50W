@@ -40,66 +40,36 @@ function load_mailbox(mailbox) {
   document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
 }
 
+
 function mails_sended(mailbox) {
-    // Assuming .btn.btn-primary is a form element
-    document.querySelector('.btn.btn-primary').addEventListener('submit', function (event) {
-      event.preventDefault(); // Prevent the form from submitting
-  
-      // Assuming you want to get the data from the form
-      const formData = new FormData(this);
-      const sender = formData.get('sender'); // Change 'sender' to the actual name attribute of your input
-      
-      // Assuming you want to create a Mails component and render it
-      function Mails(props) {
-        fetch('/emails/inbox')
-        .then(response => response.json())
-        .then(email => {
-            // Print email
-            console.log(email);
+  document.getElementById("m-sub").addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent the default form submission
 
-            // ... do something else with email ...
-        });
-       const [formData, sender]  = react.useState()
-        
-        return (
-          <div>
-            <h1>FROM: {props.sender}!</h1>
-            <br></br>
-            <h1>TO: {props.recipient}</h1>
-            <br></br>
-            <h1>Subject: {props.subject}!</h1>
-            <br></br>
-            <p>Body: {props.body}</p>
-          </div>
-        );
-      }
-      
-      // Assuming you have an element with the id 'mailsContainer' to render the Mails component
-      const mailbox = document.getElementById('mailbox');
-      const mailsProps = {
-        sender: sender,
-        subject: formData.get('subject'), // Change 'subject' to the actual name attribute of your input
-        body: formData.get('body'), // Change 'body' to the actual name attribute of your input
-      };
-  
-      // Render the Mails component
-      mailbox.innerHTML = '';
-      mailbox.appendChild(Mails(mailsProps));
+    // Render the Mails component
+    mailbox.innerHTML = '';
+    mailbox.appendChild(load_mailbox(mailbox));
 
-      var mail = document.createElement("div");
-      var sender = document.createElement('h5');
-      var subject = document.createElement('p');
-      var body = document.createElement('p');
-      var time = document.createElement('p');
+    // Create and append elements
+    const mail = document.createElement("div");
+    const sendi = document.createElement('h5');
+    const subjects = document.createElement('p');
+    const bodys = document.createElement('p');
+    const time = document.createElement('p');
 
-      const element = document.createElement('div');
-      element.innerHTML = 'This is the content of the div.';
-      element.addEventListener('click', function() {
-      console.log('This element has been clicked!')
+    const element = document.createElement('div');
+    element.innerHTML = 'This is the content of the div.';
+    element.addEventListener('click', function () {
+      console.log("Recipient:", recipient);
+      console.log("Subject:", subject);
+      console.log("Body:", body);
+      console.log('This element has been clicked!');
     });
-  document.querySelector('#container').append(element);
+
+    document.querySelector('#container').append(element);
   });
 }
+
+
 
 function archive() {
   document.querySelector('#archived').onclick = function() {
@@ -122,50 +92,6 @@ function archive() {
 
   };
 }
-
-document.getElementById("compose-form").addEventListener("submit", function(event) {
-  event.preventDefault(); // Prevent the default form submission
-
-  const recipient = document.getElementById("compose-recipients").value;
-  const subject = document.getElementById("compose-subject").value;
-  const body = document.getElementById("compose-body").value;
-
-  // Now you can use these variables for further processing or send them to the server
-  console.log("Recipient:", recipient);
-  console.log("Subject:", subject);
-  console.log("Body:", body);
-
-  // Add your fetch code here to send the data to the server if needed
-  fetch('/emails', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      recipients: recipient,
-      subject: subject,
-      body: body,
-    }),
-  })
-  .then(response => response.json())
-  .then(result => {
-    // Handle the response if needed
-    console.log(result);
-
-    // Assuming you want to render the Mails component after submitting the form
-    const mailbox = document.getElementById('mailbox');
-    const mailsProps = {
-      sender: result.sender, // Replace with the actual property from your server response
-      recipient: result.recipient, // Replace with the actual property from your server response
-      subject: result.subject, // Replace with the actual property from your server response
-      body: result.body, // Replace with the actual property from your server response
-    };
-
-    // Render the Mails component
-    mailbox.innerHTML = '';
-    mailbox.appendChild(Mails(mailsProps)); // Ensure you have the Mails function defined in your code
-  });
-});
 
 function Mails(props) {
   // Assuming you want to create a Mails component and render it
