@@ -111,32 +111,60 @@ function archive() {
 }
 
 document.getElementById("compose-form").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent the default form submission
-  
-    const recipient = document.getElementById("compose-recipients").value;
-    const subject = document.getElementById("compose-subject").value;
-    const body = document.getElementById("compose-body").value;
-  
-    // Now you can use these variables for further processing or send them to the server
-    console.log("Recipient:", recipient);
-    console.log("Subject:", subject);
-    console.log("Body:", body);
-  
-    // Add your fetch code here to send the data to the server if needed
-    fetch('/emails', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        recipients: recipient,
-        subject: subject,
-        body: body,
-      }),
-    })
-    .then(response => response.json())
-    .then(result => {
-      // Handle the response if needed
-      console.log(result);
+  event.preventDefault(); // Prevent the default form submission
+
+  const recipient = document.getElementById("compose-recipients").value;
+  const subject = document.getElementById("compose-subject").value;
+  const body = document.getElementById("compose-body").value;
+
+  // Now you can use these variables for further processing or send them to the server
+  console.log("Recipient:", recipient);
+  console.log("Subject:", subject);
+  console.log("Body:", body);
+
+  // Add your fetch code here to send the data to the server if needed
+  fetch('/emails', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      recipients: recipient,
+      subject: subject,
+      body: body,
+    }),
+  })
+  .then(response => response.json())
+  .then(result => {
+    // Handle the response if needed
+    console.log(result);
+
+    // Assuming you want to render the Mails component after submitting the form
+    const mailbox = document.getElementById('mailbox');
+    const mailsProps = {
+      sender: result.sender, // Replace with the actual property from your server response
+      recipient: result.recipient, // Replace with the actual property from your server response
+      subject: result.subject, // Replace with the actual property from your server response
+      body: result.body, // Replace with the actual property from your server response
+    };
+
+    // Render the Mails component
+    mailbox.innerHTML = '';
+    mailbox.appendChild(Mails(mailsProps)); // Ensure you have the Mails function defined in your code
   });
 });
+
+function Mails(props) {
+  // Assuming you want to create a Mails component and render it
+  return (
+    <div>
+      <h1>FROM: {props.sender}!</h1>
+      <br></br>
+      <h1>TO: {props.recipient}</h1>
+      <br></br>
+      <h1>Subject: {props.subject}!</h1>
+      <br></br>
+      <p>Body: {props.body}</p>
+    </div>
+  );
+}
