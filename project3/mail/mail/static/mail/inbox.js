@@ -29,7 +29,7 @@ function compose_email() {
   document.querySelector('#compose-body').value = '';
 }
 
-function load_mailbox(mailbox, props) {
+function load_mailbox(mailbox) {
   
   // Show the mailbox and hide other views
   document.querySelector('#emails-view').style.display = 'block';
@@ -41,12 +41,12 @@ function load_mailbox(mailbox, props) {
   document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
 }
 
-
-function mail(mailbox) {
-  document.getElementById("m-sub").addEventListener("submit", function (event) {
+// enter your javascript code here
+function mail(mailbox, props) {
+  document.getElementById("m-sub").addEventListener("click", function (event) {
     event.preventDefault(); // Prevent the default form submission
 
-    mail_view = document.querySelector('#email-view');
+    const mail_view = document.querySelector('#email-view');
     mail_view.style.display = 'block';
 
     // Render the Mails component
@@ -55,35 +55,19 @@ function mail(mailbox) {
 
     // Create and append elements
     const mail = document.createElement("div");
-    const sendi = document.createElement('h5');
-    const subjects = document.createElement('p');
-    const bodys = document.createElement('p');
-    const time = document.createElement('p');
-
-    const element = document.createElement('div');
-    element.innerHTML = 'This is the content of the div.';
-    element.addEventListener('click', function () {
-      console.log("Recipient:", recipient);
-      console.log("Subject:", subject);
-      console.log("Body:", body);
-      console.log('This element has been clicked!');
-    });
-
-    document.querySelector('#container').append(element);
+    mail.innerHTML = `
+      <h1>FROM: ${props.sender}!</h1>
+      <br></br>
+      <h1>TO: ${props.recipient}</h1>
+      <br></br>
+      <h1>Subject: ${props.subject}!</h1>
+      <br></br>
+      <p>Body: ${props.body}</p>
+    `;
+    
+    document.querySelector('#container').appendChild(mail);
   });
-  return (
-    <div>
-      <h1>FROM: {props.sender}!</h1>
-      <br></br>
-      <h1>TO: {props.recipient}</h1>
-      <br></br>
-      <h1>Subject: {props.subject}!</h1>
-      <br></br>
-      <p>Body: {props.body}</p>
-    </div>
-  );
 }
-
 
 
 function archive() {
