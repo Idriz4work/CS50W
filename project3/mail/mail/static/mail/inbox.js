@@ -65,7 +65,7 @@ function mail(mailbox, props) {
       <p>Body: ${props.body}</p>
     `;
     
-    document.querySelector('#container').appendChild(mail);
+    document.querySelector('#email-view').appendChild(mail);
   });
 }
 
@@ -90,4 +90,17 @@ function archive() {
     })
 
   };
+}
+
+function submit_email(event) {
+  // Post email to API route
+  fetch('/emails' , {
+    method: 'POST',
+    body: JSON.stringify({
+      recipients: document.querySelector('#compose-recipients').value,
+      subject: document.querySelector('#compose-subject').value,
+      body: document.querySelector('#compose-body').value
+    })
+  })
+  .then(response => load_mailbox('sent'));
 }
