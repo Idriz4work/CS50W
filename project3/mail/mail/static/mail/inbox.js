@@ -40,43 +40,6 @@ function load_mailbox(mailbox) {
   document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
 }
 
-function send(mailbox) {
-    const subject = document.querySelector('#compose-subject').value;
-    const body = document.querySelector('#compose-compose-body').value;
-    const recipient = document.querySelector('#compose-recipients').value;
-  
-    document.querySelector('#sent').onsubmit = false;
-  
-    if (document.querySelector('#sent').onsubmit) {
-      // The condition above is enough to check if onsubmit is truthy.
-      // Assuming you want to check if subject, body, and recipient have values,
-      // you can modify the condition as follows:
-      if (subject && body && recipient) {
-        document.querySelector('#sent').addEventListener('click', () => load_mailbox('sent'));
-    
-      }
-    }
-}
-  
-function archieved_emails(mailbox){
-      //get emails
-      fetch('/emails/100')
-      .then(response => response.json())
-      .then(email => {
-        // Print email
-        console.log(email);
-  
-        // Update HTML with the received email
-        document.getElementById('compose-recipients').value = email.sender;
-        document.getElementById('compose-subject').value = email.subject;
-        document.getElementById('compose-body').value = email.body;
-  
-        // ... do something else with email ...
-        document.addEventListener('').display(email.body, email.sender, email.subject)
-        document.DOCUMENT_FRAGMENT_NODE
-    });
-}
-  
 function mails_sended(mailbox) {
     // Assuming .btn.btn-primary is a form element
     document.querySelector('.btn.btn-primary').addEventListener('submit', function (event) {
