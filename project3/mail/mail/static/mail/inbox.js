@@ -51,7 +51,14 @@ function mails_sended(mailbox) {
       
       // Assuming you want to create a Mails component and render it
       function Mails(props) {
+        fetch('/emails/inbox')
+        .then(response => response.json())
+        .then(email => {
+            // Print email
+            console.log(email);
 
+            // ... do something else with email ...
+        });
        const [formData, sender]  = react.useState()
         
         return (
@@ -94,4 +101,27 @@ function archive() {
     };
 
   };
+}
+
+function send(mailbox){
+  const recipient = document.getElementById("compose-recipients").value;
+  const subject = document.getElementById("compose-subject").value;
+  const body = document.getElementById("compose-body").value;
+
+  fetch('/emails', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+    recipients: recipient,
+    subject: subject,
+    body: body,
+    }),
+  })
+  .then(response => response.json())
+  .then(result => {
+    // Print result
+    console.log(result);
+  });
 }
