@@ -56,7 +56,8 @@ function mail(mailbox) {
           const body = email.body;
   
           // Render the email in the mailbox
-          mailbox.innerHTML = `
+          const mails = document.querySelector("#email-view");
+          mails.innerHTML = `
             <div>
               <h1>FROM: ${sender}</h1>
               <h1>TO: ${recipient}</h1>
