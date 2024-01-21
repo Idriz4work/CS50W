@@ -21,20 +21,19 @@ def create_new(request):
     if request.method == "POST":
         titles = request.POST.get("title", "")
         text = request.POST.get("textar", "")
-        save_entry(title, content)
 
         if text and titles not in request.session:
             request.session[titles] = []  # Use titles as the key
 
         if text and titles in request.session:
             # Create a new page instance
-            new_page = saved_pages(title=titles, text_page=text)
+            new_page = saved_pages(title=titles, body=text)
 
             # Save the new page to the database
             new_page.save()
 
             # Fetch all articles from the database
-            articles = saved_pages.objects.all()
+            articles = save_entry(titles, text)
 
             return render(request, "encyclopedia/create.html", {
                 "articles": articles
