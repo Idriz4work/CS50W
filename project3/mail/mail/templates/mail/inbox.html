@@ -5,7 +5,7 @@
 
     <h2>{{ request.user.email }}</h2>
     <div id="navbar">
-        <button data-page="inbox" class="btn btn-sm btn-outline-primary" id="inbox">Inbox</button>
+        <button data-page="inbox" class="btn btn-sm btn-outline-primary" onclick="mail(mailbox)" id="inbox">Inbox</button>
         <button data-page="compose" class="btn btn-sm btn-outline-primary" id="compose">Compose</button>
         <button data-page="sent" class="btn btn-sm btn-outline-primary" id="sent">Sent</button>
         <button data-page="archive" class="btn btn-sm btn-outline-primary" id="archived">Archived</button>
