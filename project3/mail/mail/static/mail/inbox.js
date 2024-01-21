@@ -43,16 +43,16 @@ function load_mailbox(mailbox) {
 
 // enter your javascript code here
 function mail(mailbox) {
-  document.getElementById("m-sub").addEventListener("click", function (event) {
-
+  document.getElementById("inbox").addEventListener("click", function (event) {
+    // Get the emails from memory
     fetch('/emails/inbox')
     .then(response => response.json())
     .then(emails => {
         // Print emails
         console.log(emails);
-        
+
         event.preventDefault(); // Prevent the default form submission
-    
+        //
         const mail_view = document.querySelector('#email-view');
         mail_view.style.display = 'block';
     
@@ -71,10 +71,9 @@ function mail(mailbox) {
           <br></br>
           <p>Body: ${body}</p>
         `;
-        // ... do something else with emails ...
+        // save changes / append changes
+        document.querySelector('#email-view').appendChild(mail);
     });
-    
-    document.querySelector('#email-view').appendChild(mail);
   });
 }
 
