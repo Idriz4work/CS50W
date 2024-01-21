@@ -56,13 +56,13 @@ function mail(mailbox) {
     // Create and append elements
     const mail = document.createElement("div");
     mail.innerHTML = `
-      <h1>FROM: ${props.sender}!</h1>
+      <h1>FROM: ${sender}!</h1>
       <br></br>
-      <h1>TO: ${props.recipient}</h1>
+      <h1>TO: ${recipient}</h1>
       <br></br>
-      <h1>Subject: ${props.subject}!</h1>
+      <h1>Subject: ${subject}!</h1>
       <br></br>
-      <p>Body: ${props.body}</p>
+      <p>Body: ${body}</p>
     `;
     
     document.querySelector('#email-view').appendChild(mail);
