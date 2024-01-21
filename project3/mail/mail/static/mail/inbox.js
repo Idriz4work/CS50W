@@ -42,7 +42,7 @@ function load_mailbox(mailbox) {
 }
 
 // enter your javascript code here
-function mail(mailbox, props) {
+function mail(mailbox) {
   document.getElementById("m-sub").addEventListener("click", function (event) {
     event.preventDefault(); // Prevent the default form submission
 
