@@ -93,14 +93,16 @@ function archive() {
 }
 
 function submit_email(event) {
-  // Post email to API route
-  fetch('/emails' , {
-    method: 'POST',
-    body: JSON.stringify({
-      recipients: document.querySelector('#compose-recipients').value,
-      subject: document.querySelector('#compose-subject').value,
-      body: document.querySelector('#compose-body').value
+  document.querySelector('#m-sub').addEventListener.onclick=>{
+    fetch('/emails' , {
+      method: 'POST',
+      body: JSON.stringify({
+        recipients: document.querySelector('#compose-recipients').value,
+        subject: document.querySelector('#compose-subject').value,
+        body: document.querySelector('#compose-body').value
+      })
     })
-  })
-  .then(response => load_mailbox('sent'));
+  }
+  // Post email to API route
+  then(response => load_mailbox('sent'));
 }
