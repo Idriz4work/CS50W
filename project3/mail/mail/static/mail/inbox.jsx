@@ -67,9 +67,8 @@ function mail(mailbox) {
           `;
         });
     });
-  }
+}
   
-
 
 function archive() {
   document.querySelector('#archived').onclick = function() {
@@ -92,6 +91,7 @@ function archive() {
 
   };
 }
+
 
 function submit_email(event) {
   document.querySelector('#m-sub').addEventListener('click', () => {
