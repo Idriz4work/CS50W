@@ -93,16 +93,32 @@ function archive() {
 }
 
 function submit_email(event) {
-  document.querySelector('#m-sub').addEventListener.onclick=>{
+  document.querySelector('#m-sub').addEventListener('click', () => {
     fetch('/emails' , {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         recipients: document.querySelector('#compose-recipients').value,
         subject: document.querySelector('#compose-subject').value,
         body: document.querySelector('#compose-body').value
       })
     })
-  }
-  // Post email to API route
-  then(response => load_mailbox('sent'));
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Failed to submit email');
+      }
+    })
+    .then(data => {
+      console.log(data); // You can handle the response data here if needed
+      load_mailbox('sent');
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      // Handle error appropriately
+    });
+  });
 }
