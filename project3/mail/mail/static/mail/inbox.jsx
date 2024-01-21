@@ -41,44 +41,33 @@ function load_mailbox(mailbox) {
   document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
 }
 
-// enter your javascript code here
+
 function mail(mailbox) {
-  document.getElementById("inbox").addEventListener("click", function (event) {
-      // Get the emails from memory
+    document.getElementById("inbox").addEventListener("click", function (event) {
       fetch('/emails/inbox')
-      .then(response => response.json())
-      .then(emails => {
-          // Print emails
-          console.log(emails);
+        .then(response => response.json())
+        .then(emails => {
+          // Assuming emails is an array of email objects
+          // Display the first email in the inbox
+          const email = emails[0];
+          const sender = email.sender;
+          const recipient = email.recipient;
+          const subject = email.subject;
+          const body = email.body;
+  
+          // Render the email in the mailbox
+          mailbox.innerHTML = `
+            <div>
+              <h1>FROM: ${sender}</h1>
+              <h1>TO: ${recipient}</h1>
+              <h1>Subject: ${subject}</h1>
+              <p>Body: ${body}</p>
+            </div>
+          `;
         });
-      });
-      const sender = document.querySelector('jbh');
-      const recipient = document.querySelector(' k ');
-      const subject = document.querySelector('');
-      const body = document.querySelector('');
-    
-      //
-      const mail_view = document.querySelector('#email-view');
-      mail_view.style.display = 'block';
-      
-      // Render the Mails component
-      mailbox.innerHTML = '';
-      mailbox.appendChild(load_mailbox(mailbox));
-      
-      // Create and append elements
-      const mail = document.createElement("div");
-      mail.innerHTML = `
-      <h1>FROM: ${sender}!</h1>
-      <br></br>
-      <h1>TO: ${recipient}</h1>
-      <br></br>
-      <h1>Subject: ${subject}!</h1>
-      <br></br>
-      <p>Body: ${body}</p>
-      `;
-    // save changes / append changes
-    document.querySelector('#email-view').appendChild(mail);
-}
+    });
+  }
+  
 
 
 function archive() {
