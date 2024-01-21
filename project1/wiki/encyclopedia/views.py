@@ -13,19 +13,15 @@ from django.urls import reverse
 from .models import saved_pages  # Import your model
 
 def index(request):
-    if request.method == "GET":
-        return render(request, "encyclopedia/index.html", {
-            "index": saved_pages.objects.all()
-        })
-    else:
-        return render(request, "encyclopedia/index.html", {
-            "index": saved_pages.objects.all()
-        })
+    return render(request, "encyclopedia/index.html", {
+        "index": list_entries()
+    })
         
 def create_new(request):
     if request.method == "POST":
         titles = request.POST.get("title", "")
         text = request.POST.get("textar", "")
+        save_entry(title, content)
 
         if text and titles not in request.session:
             request.session[titles] = []  # Use titles as the key
