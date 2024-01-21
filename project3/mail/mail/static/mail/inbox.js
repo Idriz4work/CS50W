@@ -44,37 +44,36 @@ function load_mailbox(mailbox) {
 // enter your javascript code here
 function mail(mailbox) {
   document.getElementById("inbox").addEventListener("click", function (event) {
-    // Get the emails from memory
-    fetch('/emails/inbox')
-    .then(response => response.json())
-    .then(emails => {
-        // Print emails
-        console.log(emails);
-
-        event.preventDefault(); // Prevent the default form submission
-        //
-        const mail_view = document.querySelector('#email-view');
-        mail_view.style.display = 'block';
+      // Get the emails from memory
+      fetch('/emails/inbox')
+      .then(response => response.json())
+      .then(emails => {
+          // Print emails
+          console.log(emails);
+        });
+      });
     
-        // Render the Mails component
-        mailbox.innerHTML = '';
-        mailbox.appendChild(load_mailbox(mailbox));
-    
-        // Create and append elements
-        const mail = document.createElement("div");
-        mail.innerHTML = `
-          <h1>FROM: ${sender}!</h1>
-          <br></br>
-          <h1>TO: ${recipient}</h1>
-          <br></br>
-          <h1>Subject: ${subject}!</h1>
-          <br></br>
-          <p>Body: ${body}</p>
-        `;
-        // save changes / append changes
-        document.querySelector('#email-view').appendChild(mail);
-    });
-  });
+      //
+      const mail_view = document.querySelector('#email-view');
+      mail_view.style.display = 'block';
+      
+      // Render the Mails component
+      mailbox.innerHTML = '';
+      mailbox.appendChild(load_mailbox(mailbox));
+      
+      // Create and append elements
+      const mail = document.createElement("div");
+      mail.innerHTML = `
+      <h1>FROM: ${sender}!</h1>
+      <br></br>
+      <h1>TO: ${recipient}</h1>
+      <br></br>
+      <h1>Subject: ${subject}!</h1>
+      <br></br>
+      <p>Body: ${body}</p>
+      `;
+    // save changes / append changes
+    document.querySelector('#email-view').appendChild(mail);
 }
 
 
