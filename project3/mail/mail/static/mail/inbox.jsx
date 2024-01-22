@@ -3,6 +3,54 @@ import React from 'react';
 import React from 'react';
 import ReactDOM, { render } from 'react-dom';
 
+// access value
+fetch('/emails/inbox')
+    .then(response => response.json())
+    .then(emails => {
+        // Print emails
+        console.log(emails);
+
+        // Display emails in HTML
+        displayEmails(emails, 'emailContainer');
+    });
+
+// get emails
+fetch('/emails/100')
+    .then(response => response.json())
+    .then(email => {
+        // Print email
+        console.log(email);
+
+        // Display email in HTML
+        displayEmail(email, 'emailContainer');
+    });
+
+    function displayEmails(emails, containerId) {
+      const container = document.getElementById(containerId);
+  
+      // Clear existing content
+      container.innerHTML = '';
+  
+      // Display each email in a paragraph
+      emails.forEach(email => {
+          const paragraph = document.createElement('p');
+          paragraph.textContent = `Subject: ${email.subject}, Sender: ${email.sender}`;
+          container.appendChild(paragraph);
+      });
+  }
+  
+  function displayEmail(email, containerId) {
+      const container = document.getElementById(containerId);
+  
+      // Clear existing content
+      container.innerHTML = '';
+  
+      // Display the specific email in a paragraph
+      const paragraph = document.createElement('p');
+      paragraph.textContent = `Subject: ${email.subject}, Sender: ${email.sender}, Body: ${email.body}`;
+      container.appendChild(paragraph);
+  }
+
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -72,7 +120,7 @@ function mail(mailbox) {
                 </div>`).join('')}
             </div>
         `;
-        
+      // put mails into the div with id emails-view
       document.getElementById('email-view').innerHTML = mails.innerHTML;
     });
   });
@@ -81,8 +129,27 @@ function mail(mailbox) {
 
 function archive() {
   document.querySelector('#archived').onclick = function() {
-    render("achieve.html");
     let body;
+
+    // access value
+    fetch('/emails/inbox')
+    .then(response => response.json())
+    .then(emails => {
+        // Print emails
+        console.log(emails);
+
+        // ... do something else with emails ...
+    });
+
+    //get emails
+    fetch('/emails/100')
+    .then(response => response.json())
+    .then(email => {
+        // Print email
+        console.log(email);
+
+        // ... do something else with email ...
+    });
 
     document.getElementById("m-sub").onsubmit = function(){
       recipient = document.getElementById("compose-recipients").value;
@@ -90,6 +157,8 @@ function archive() {
       body = document.getElementById("compose-body").value;
       document.getElementById("Textar").textContent = `Hello ${body}, ${recipient}, ${subject}`;
     };
+
+
 
     fetch('/emails/100', {
       method: 'PUT',
@@ -101,7 +170,7 @@ function archive() {
 }
 
 
-function submit_email(event) {
+function submit_email() {
   document.querySelector('#m-sub').addEventListener('click', () => {
     fetch('/emails' , {
       method: 'POST',
