@@ -1,7 +1,7 @@
 // your_jsx_file.jsx
 import React from 'react';
 import React from 'react';
-import ReactDOM, { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -41,43 +41,54 @@ function load_mailbox(mailbox) {
   document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
 }
 
-function mail(mailbox) {
-  document.getElementById("inbox").addEventListener("click", function (event) {
-    fetch('/emails/100')
-        .then(response => response.json())
-        .then(email => {
+function fetchEmailData() {
+  // Replace '/emails/100' with the appropriate API endpoint
+  fetch('/emails/100')
+      .then(response => response.json())
+      .then(email => {
           // Display email in HTML
-            displayEmail(email, '#emails-view');
-        });
-        // display the data that the user sended via API in JS 
-        const sender = localStorage.getItem('sender');
-        const recipient = localStorage.getItem('recipients');
-        const subject = localStorage.getItem('subject');
-        const body = localStorage.getItem('body');
+          displayEmail(email, '#emails-view');
+      })
+      .catch(error => console.error('Error fetching email data:', error));
+}
 
-        // enter your javascript code here
-        const Data = [];
-        Data.push({ sender, recipient, subject, body });
-        
-        // Render the email in the mailbox
-        const mails = document.querySelector("#email-view");
-        mails.innerHTML = `
-          <div>
-              <h2>Your emails received / sent</h2>
-              ${Data.map((email, index) => `
-                <div key=${index}>
+function renderEmails() {
+  // Display the data that the user sent via API in JS
+  const sender = localStorage.getItem('sender');
+  const recipient = localStorage.getItem('recipients');
+  const subject = localStorage.getItem('subject');
+  const body = localStorage.getItem('body');
+
+  // Store email data in an array
+  const data = [{ sender, recipient, subject, body }];
+
+  // Render the email in the mailbox
+  const mails = document.querySelector("#email-view");
+  mails.innerHTML = `
+      <div>
+          <h2>Your emails received / sent</h2>
+          ${data.map((email, index) => `
+              <div key=${index}>
                   <h1>FROM: ${email.sender}</h1>
                   <h1>TO: ${email.recipient}</h1>
                   <h1>Subject: ${email.subject}</h1>
                   <p>Body: ${email.body}</p>
-                  </div>`).join('')}
-                  </div>
-        `;
-      // put mails into the div with id emails-view
-      document.getElementById('email-view').innerHTML = mails.innerHTML;
-    });
+              </div>`).join('')}
+      </div>
+  `;
 
-    ReactDOM.render(<mail(mailbox) />, document.querySelector("#email-view"));
+  // Put mails into the div with id emails-view
+  document.getElementById('emails-view').innerHTML = mails.innerHTML;
+}
+
+function mail(mailbox) {
+  document.getElementById("inbox").addEventListener("click", function (event) {
+      // Fetch email data
+      fetchEmailData();
+
+      // Render emails
+      renderEmails();
+  });
 }
 
 function displayEmails(emails, containerId) {
@@ -152,3 +163,6 @@ function submit_email() {
     });
   });
 }
+
+// Assuming you have imported ReactDOM appropriately
+ReactDOM.render(<mail />, document.querySelector("#email-view"));
