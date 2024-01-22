@@ -53,6 +53,8 @@ function fetchEmailData() {
 }
 
 function renderEmails() {
+
+  fetchEmailData();
   // Display the data that the user sent via API in JS
   const sender = localStorage.getItem('sender');
   const recipient = localStorage.getItem('recipients');
