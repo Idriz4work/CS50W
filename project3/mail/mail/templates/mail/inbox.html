@@ -13,7 +13,8 @@
     </div>
     <hr>
     
-    <div id="emails-view">
+    <div id="emails-view" type="text/babel">
+        <script src="{% static 'mail/inbox.jsx' %}"></script>
     </div>
 
     <div key="index" id="email-view">
@@ -41,5 +42,4 @@
 
 {% block script %}
     <script src="{% static 'mail/inbox.js' %}"></script>
-    <script src="{% static 'mail/inbox.jsx' %}"></script>
 {% endblock %}

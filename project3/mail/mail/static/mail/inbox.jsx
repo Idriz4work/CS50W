@@ -1,6 +1,5 @@
 // your_jsx_file.jsx
 import React from 'react';
-import React from 'react';
 import ReactDOM from 'react-dom';
 
 
@@ -94,20 +93,6 @@ function mail(mailbox) {
   });
 }
 
-function displayEmails(emails, containerId) {
-      const container = document.getElementById(containerId);
-  
-      // Clear existing content
-      container.innerHTML = '';
-  
-      // Display each email in a paragraph
-      emails.forEach(email => {
-          const paragraph = document.createElement('p');
-          paragraph.textContent = `Subject: ${email.subject}, Sender: ${email.sender}`;
-          container.appendChild(paragraph);
-      });
-}
-
 function archive() {
   document.querySelector('#archived').onclick = function() {
     let body;
@@ -119,7 +104,7 @@ function archive() {
             displayEmail(email, '#emails-view');
         });
 
-    document.getElementById("m-sub").onsubmit = function(){
+      document.getElementById("m-sub").onsubmit = function(){
       recipient = document.getElementById("compose-recipients").value;
       subject = document.getElementById("compose-subject").value;
       body = document.getElementById("compose-body").value;
@@ -166,6 +151,3 @@ function submit_email() {
     });
   });
 }
-
-// Assuming you have imported ReactDOM appropriately
-ReactDOM.render(<mail />, document.querySelector("#email-view"));
