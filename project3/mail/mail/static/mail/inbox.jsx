@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // By default, load the inbox
   load_mailbox('inbox');
+  
 });
 
 function compose_email() {
@@ -75,14 +76,22 @@ function renderEmails() {
                   <h1>TO: ${email.recipient}</h1>
                   <h1>Subject: ${email.subject}</h1>
                   <p>Body: ${email.body}</p>
-                  </div>`).join('')}
-                  </div>
-        `;
-      // put mails into the div with id emails-view
-      document.getElementById('email-view').innerHTML = mails.innerHTML;
-    });
+              </div>`).join('')}
+      </div>
+  `;
 
-    ReactDOM.render(<mail(mailbox) />, document.querySelector("#email-view"));
+  // Put mails into the div with id emails-view
+  document.getElementById('emails-view').innerHTML = mails.innerHTML;
+}
+
+function mail(mailbox) {
+  document.getElementById("inbox").addEventListener("click", function (event) {
+      // Fetch email data
+      fetchEmailData();
+
+      // Render emails
+      renderEmails();
+  });
 }
 
 function displayEmails(emails, containerId) {
