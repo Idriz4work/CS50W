@@ -71,7 +71,7 @@ function mail(mailbox) {
                   <h1>Subject: ${email.subject}</h1>
                   <p>Body: ${email.body}</p>
                   </div>`).join('')}
-                  </div>
+                </div>
         `;
       // put mails into the div with id emails-view
       document.getElementById('email-view').innerHTML = mails.innerHTML;
