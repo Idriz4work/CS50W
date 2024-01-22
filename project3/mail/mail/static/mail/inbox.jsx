@@ -41,34 +41,43 @@ function load_mailbox(mailbox) {
   document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
 }
 
-
 function mail(mailbox) {
-    document.getElementById("inbox").addEventListener("click", function (event) {
-      fetch('/emails/inbox')
-        .then(response => response.json())
-        .then(emails => {
-          // Assuming emails is an array of email objects
-          // Display the first email in the inbox
-          const email = emails[0];
-          const sender = email.sender;
-          const recipient = email.recipient;
-          const subject = email.subject;
-          const body = email.body;
-  
-          // Render the email in the mailbox
-          const mails = document.querySelector("#email-view");
-          mails.innerHTML = `
-            <div>
-              <h1>FROM: ${sender}</h1>
-              <h1>TO: ${recipient}</h1>
-              <h1>Subject: ${subject}</h1>
-              <p>Body: ${body}</p>
+  document.getElementById("inbox").addEventListener("click", function (event) {
+    fetch('/emails/inbox')
+      .then(response => response.json())
+      .then(emails => {
+        // Assuming emails is an array of email objects
+        // Display the first email in the inbox
+        const email = emails[0];
+        const sender = email.sender;
+        const recipient = email.recipient;
+        const subject = email.subject;
+        const body = email.body;
+
+        // enter your javascript code here
+        const Data = [];
+        Data.push({ sender, recipient, subject, body });
+
+        // Render the email in the mailbox
+        const mails = document.querySelector("#email-view");
+        mails.innerHTML = `
+          <div>
+              <h2>Your emails received / sent</h2>
+              ${Data.map((email, index) => `
+                <div key=${index}>
+                  <h1>FROM: ${email.sender}</h1>
+                  <h1>TO: ${email.recipient}</h1>
+                  <h1>Subject: ${email.subject}</h1>
+                  <p>Body: ${email.body}</p>
+                </div>`).join('')}
             </div>
-          `;
-        });
+        `;
+        
+      document.getElementById('email-view').innerHTML = mails.innerHTML;
     });
+  });
 }
-  
+
 
 function archive() {
   document.querySelector('#archived').onclick = function() {
@@ -88,7 +97,6 @@ function archive() {
           archived: true
       })
     })
-
   };
 }
 
