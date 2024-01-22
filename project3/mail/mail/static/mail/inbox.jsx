@@ -75,22 +75,14 @@ function renderEmails() {
                   <h1>TO: ${email.recipient}</h1>
                   <h1>Subject: ${email.subject}</h1>
                   <p>Body: ${email.body}</p>
-              </div>`).join('')}
-      </div>
-  `;
+                  </div>`).join('')}
+                  </div>
+        `;
+      // put mails into the div with id emails-view
+      document.getElementById('email-view').innerHTML = mails.innerHTML;
+    });
 
-  // Put mails into the div with id emails-view
-  document.getElementById('emails-view').innerHTML = mails.innerHTML;
-}
-
-function mail(mailbox) {
-  document.getElementById("inbox").addEventListener("click", function (event) {
-      // Fetch email data
-      fetchEmailData();
-
-      // Render emails
-      renderEmails();
-  });
+    ReactDOM.render(<mail(mailbox) />, document.querySelector("#email-view"));
 }
 
 function displayEmails(emails, containerId) {
