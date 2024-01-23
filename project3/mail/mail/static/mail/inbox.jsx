@@ -90,7 +90,7 @@ function mail(mailbox) {
 
       // Render emails
       renderEmails();
-  });
+  });  
 }
 
 function archive() {
