@@ -213,10 +213,10 @@ function archive() {
                 full.addEventListener('click', () => {
                     fetch(`/emails/${saved.email_id}`, {
                         method: 'PUT',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRFToken': csrfToken
-                        },
+                        // in reality this CSRF token is required for security headers: {
+                        //     'Content-Type': 'application/json',
+                        //     'X-CSRFToken': csrfToken
+                        // },
                         body: JSON.stringify({ read: true })
                     })
                     .then(response => response.json());
