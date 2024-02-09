@@ -20,5 +20,7 @@ function render_about(){
 }
 
 function render_projects(){
-
+    const project = document.querySelector('.projects-view');
+    project.innerHTML = `<h1>Projects</h1>
+        <h2>Mail</h2>`
 }

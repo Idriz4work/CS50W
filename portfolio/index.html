@@ -3,37 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atilla Idriz</title>
+    <title>Atilla idriz</title>
     <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/app.jsx"></script>
     <link rel="stylesheet" href="/static/utilities.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fontawesome.com/icons/wheat-awn?f=classic&s=light" crossorigin="anonymous">
 </head>
 <body>
     <header class="hero">
-        <div class="navbar">
-            <a href=" " onclick="render_about()" class="logo"><span>Atilla </span>Idriz</a>
-            
+        <div id="navbar" class="navbar">
+            <h1 class="logo"><i class="fa-light fa-wheat-awn"></i><span class="bg-light">Atilla</span> Idriz</h1>
+            <nav>
                 <ul>
-                    <li><a class="mhover" href="">Projects</a></li>
-                    <li><a class="mhover" href="">Contact</a></li>
+                    <li><a onclick="render_project()" >Projects</a></li>
+                    <li><a href="mailto:atilla.arbeit1@gmail.com" target="_blank" >Contact</a></li>
                 </ul>
-            
+            </nav>
         </div>
+        <!-- Posibble changes due to about-view / projects-view -->
         <div class="content">
-            <h2>Front end Developer</h2>
+            <h2>We provide best bio</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta esse animi quo amet pariatur, hic assumenda explicabo laborum expedita provident libero recusandae fuga itaque ratione, magnam ducimus cupiditate tenetur!</p>
-            <button id="ab" onclick="render_about()" class="btn btn-outline"><span>Who is Atilla ?</span></button>
+            <button id="ab" onclick="render_about()" class="btn btn-outline">Who is Atilla Idriz</button>
         </div>
     </header>
 
     <main>
-        <!-- Some info about me -->
-        <section class="info">
+        <!-- This is the code for the JS code -->
+        <div class="about-view">
+            
+        </div>
+        
+        <!-- This is the code for the JS code -->
+        <div class="projects-view">
 
-        </section>
-        <!-- Only showcasing some projects -->
-        <section class="projects">
-
+        </div>
+        
+        <section class="harvard">
+            <div class="row">
+                <div class="column">
+                    <div class="column1">
+                        <img src="/img/CS50x (A4).png" alt="">
+                    </div>
+                    <div class="column2">
+                        <p>Harvard Certificate 2023</p>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
