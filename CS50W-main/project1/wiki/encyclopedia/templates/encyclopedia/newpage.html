@@ -1,0 +1,44 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% load static %}
+
+{% block body %}
+    {% if request.method == "POST" %}
+    <style>
+        #ind{
+            color: black;
+            background-color: aliceblue;
+
+        }
+        #ind:hover{
+            color: blue;
+            background-color: aqua;
+        }
+    </style>
+    <div>
+        <nav>
+            <button method="post" href="{% url 'index' %}" id="ind">go back to index page</button>
+        </nav>
+    </div>
+    {{title}}
+    <br>
+    {{text_page}}
+    <ul>
+        {% for i in index%}
+            {% for ran in index %}
+                <li>Created pages title: {{ ran.title }} text: {{ ran.text_page }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+    {% else %}
+        <form method="post" action="{% url 'page' %}">
+            {% csrf_token %}
+            <!-- Include any form fields here if needed -->
+            <button href="{% url 'index' %}" type="submit">Go back to index</button>
+        </form>
+    {% endif %}
+{% endblock %}

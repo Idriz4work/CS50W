@@ -1,0 +1,59 @@
+{% extends "mail/layout.html" %}
+{% load static %}
+
+{% block body %}
+<script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
+<body>
+    {% csrf_token %}
+    <div class="navbar">
+        <h2 id="username">{{ request.user.email }}</h2>
+        <div class="dropdown">
+            <button class="btn" onclick="toggleDropdown()" id="dropdownBtn">Drop down</button>
+            <div class="dropdown-content" id="dropdownContent">
+              <button class="btn" onclick="renderEmails()" id="inbox">Inbox</button>
+              <button class="btn" id="compose">Compose</button>
+              <button class="btn" onclick="sended_emails()" id="sent">Sent</button>
+              <button class="btn" onclick="archive()" id="archived">Archived</button>
+            </div>
+          </div>
+    <a class="btn" href="{% url 'logout' %}">Log Out</a>
+</div>
+
+        
+        <header class="">
+            <div id="emails-view">
+                {% csrf_token %}
+                <div id="container">
+                    
+                </div>
+                <div class="mar">
+
+                </div>
+            </div>
+            
+            <div id="compose-view">
+                <h3>New Email</h3>
+            <form id="compose-form">
+                <div class="form-group">
+                    From: <input disabled class="form-control" value="{{ request.user.email }}">
+                </div>
+                <div class="form-group">
+                    To: <input id="compose-recipients" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" id="compose-subject" placeholder="Subject">
+                </div>
+                <textarea class="form-control" id="compose-body" placeholder="Body"></textarea>
+                <input type="submit" class="btn btn-primary" id="m-sub"/>
+            </form>
+        </div>
+        </header>
+    </body>
+    
+    {% endblock %}
+    
+    {% block script %}
+    <!-- Bootstrap JS and Popper.js (optional, but required for some Bootstrap features) -->
+    <!--JSX File link-->
+    <script src="{% static 'mail/inbox.jsx' %}"></script>
+{% endblock %}

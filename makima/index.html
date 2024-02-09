@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=#, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/utilitys.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+      integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ="
+      crossorigin="anonymous"
+    />
+    <script src="/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js">
+        const navbar = document.querySelector('#navbar');
+        const scrooled = false;
+         window.onscroll = function() {
+        if(window.pageYOffset > 100){
+            navbar.classList.remove('top');
+            if(!scrooled){
+                navbar.style.transform = 'translateY(-70px)';
+            }
+            setTimeout(() => {
+                navbar.style.transform = 'translateY(0)';
+                scrooled = true;
+            }, 200);
+        }
+        else{
+            navbar.classList.add('top');
+            scrooled = false;
+        }
+}
+    </script>
+
+</head>
+<body>
+    <header class="hero">
+        <div id="nav" class="navbar top">
+            <h1 class="logo">
+            <span href="/index.html" class="text-primary"><i class="fas fa-book-open"></i>Makima</span> GmbH
+            </h1>
+            <nav>
+                <ul>
+                    <li><a href="/index.html">What is Makima GmbH</a></li>
+                    <li><a href="/work.html">Our Work</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <div class="content">
+            <h1>Makima Beam Mighty Sus</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, similique?</p>
+            <a href="about.html" class="btn"><i class="fas fa-chevron-right"></i>Read more</a>
+        </div>
+    </header>
+        <main>
+            <section id="about" class="icons bg-light">
+                <div class="flex-items">
+                    <div>
+                        <i class="fas fa-university fa-2x"></i>
+                        <i class="fa-light fa-globe"></i>
+                        <h3>The best Plush's over the glob</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, natus.</p>
+                    </div>
+                    <div>
+                        <i class="fas fa-university fa-2x"></i>
+                        <i class="fa-light fa-globe"></i>
+                        <h3>The best Plush's over the glob</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, natus.</p>
+                    </div>
+                    <div>
+                        <i class="fas fa-university fa-2x"></i>
+                        <i class="fa-light fa-globe"></i>
+                        <h3>The best Plush's over the glob</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, natus.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="solution flex-columns">
+                <div class="row">
+                    <div class="column">
+                        <div class="column1">
+                            <img src="https://cdn.shopify.com/s/files/1/0043/8858/5507/products/Screenshot_2019-11-06_at_2.13.57_AM_2000x.png?v=1572977743" alt="">
+                        </div>
+                    </div>
+                        <div class="column2 bg-dark">
+                            <h4>What are you looking for</h4>
+                            <h2>We provide napkins and anime Plush's</h2>
+                            <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis unde 
+                            repudiandae iusto animi, sapiente aliquam accusamus
+                            </p>
+                            <a href="/work.html" class="btn btn-outline">
+                                <i class="fas fa-chevron"></i>Read More</a>
+                            </div>
+                        </div>
+            </section>
+            <!--Galerie angelehnt-->
+            <section id="cases" class="flex-grid section-padding"> <!-- Removed "cases" class -->
+                <header class="section-header"> <!-- Added "section-header" class -->
+                    <h4>This is our work</h4>
+                    <h2>Business cases</h2> <!-- Corrected typo: "Buisness" to "Business" -->
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi amet incidunt quibusdam dolorem,
+                        velit recusandae labore dolore placeat quidem. Quibusdam.</p>
+                </header>
+                <div class="row">
+                    <div class="column">
+                        <img src="https://th.bing.com/th/id/OIP.rJwPXwWL9KF_NYo-IAt3YQHaGR?rs=1&pid=ImgDetMain" alt="">
+                        <img src="https://i.pinimg.com/originals/22/dc/69/22dc6954b1b1c56d6b30d12632c6ab75.jpg" alt="">
+                    </div>
+                    <div class="column">
+                        <img src="https://th.bing.com/th/id/OIP.rJwPXwWL9KF_NYo-IAt3YQHaGR?rs=1&pid=ImgDetMain" alt="">
+                        <img src="https://i.pinimg.com/originals/22/dc/69/22dc6954b1b1c56d6b30d12632c6ab75.jpg" alt="">
+                    </div>
+                    <div class="column">
+                        <img src="https://th.bing.com/th/id/OIP.rJwPXwWL9KF_NYo-IAt3YQHaGR?rs=1&pid=ImgDetMain" alt="">
+                        <img src="https://i.pinimg.com/originals/22/dc/69/22dc6954b1b1c56d6b30d12632c6ab75.jpg" alt="">
+                    </div>
+                    <div class="column">
+                        <img src="https://th.bing.com/th/id/OIP.rJwPXwWL9KF_NYo-IAt3YQHaGR?rs=1&pid=ImgDetMain" alt="">
+                        <img src="https://i.pinimg.com/originals/22/dc/69/22dc6954b1b1c56d6b30d12632c6ab75.jpg" alt="">
+                    </div>
+                </div>
+            </section>
+            
+            <!--Blog-->
+            <section id="blog" class="blog flex-columns flex-reverse">
+                <div class="row">
+                    <div class="column">
+                        <div class="column1">
+                            <img src="https://th.bing.com/th/id/OIP.sJeAXgV-BxSR5-vYn6we7gHaEd?rs=1&pid=ImgDetMain" alt="">
+                        </div>
+                    </div>
+                        <div class="column2 bg-light">
+                            <h4>April 29 2024</h4>
+                            <h2>Blog post one</h2>
+                            <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis unde 
+                            repudiandae iusto animi, sapiente aliquam accusamus
+                            </p>
+                            <a href="/work.html" class="btn btn-outline">
+                                <i class="fas fa-chevron"></i>Read our Blog</a>
+                            </div>
+                        </div>
+            </section>
+            <!--Team-->
+            <section id="team" class="flex-grid section-padding"> <!-- Removed "cases" class -->
+                <header class="section-header"> <!-- Added "section-header" class -->
+                    <h4>Who we are</h4>
+                    <h2>Our exellent team</h2> <!-- Corrected typo: "Buisness" to "Business" -->
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi amet incidunt quibusdam dolorem,
+                        velit recusandae labore dolore placeat quidem. Quibusdam.</p>
+                </header>
+                <div class="flex-items">
+                    <div>
+                        <img src="https://th.bing.com/th/id/OIP.zOr9_jWchCOY-by79Y3VYQHaLg?w=128&h=199&c=7&r=0&o=5&dpr=1.5&pid=1.7" alt="">
+                        <h4>Yusuku Darakushi</h4>
+                        <p>CEO</p>
+                    </div>
+                    <div>
+                        <img src="https://th.bing.com/th/id/OIP.UnQPqunhAru9eRDLsHW-2gHaFj?rs=1&pid=ImgDetMain" alt="">
+                        <h4>Atira Idirizu</h4>
+                        <p>Owner</p>
+                    </div>
+                    <div>
+                        <img src="https://th.bing.com/th/id/OIP.alrvVOTcBi4wsXyoJM9u0QHaHa?w=203&h=203&c=7&r=0&o=5&dpr=1.5&pid=1.7" alt="">
+                        <h4>Timothy Walker</h4>
+                        <p>Web developer</p>
+                    </div>
+                </div>
+            </section>
+            <!--Contact-->
+            <section id="contact" class="contact flex-columns">
+                <div class="row">
+                    <div class="column">
+                        <div class="column1">
+                            <img src="https://th.bing.com/th/id/OIP.18mwqyCHm68rAD2y28knKAHaEK?rs=1&pid=ImgDetMain" alt="">
+                        </div>
+                    </div>
+                        <div class="column2 bg-light">
+                            <h2>Contact us !</h2>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos, nulla!</p>
+                            <form action="" class="callback-form">
+                                <div id="form-control">
+                                    <label for=""></label>
+                                    <input type="text" id="name" placeholder="name">
+                                </div>
+                            </form>
+                            <form action="" class="callback-form">
+                                <div id="form-control">
+                                    <label for=""></label>
+                                    <input type="text" id="email" placeholder="enter email">
+                                </div>
+                            </form>
+                            <form action="" class="callback-form">
+                                <div id="form-control">
+                                    <label for=""></label>
+                                    <input type="text" id="phone" placeholder="enter phone">
+                                </div>
+                                <button id="submit" type="submit"></button>
+                            </form>
+                        </div>
+            </section>
+        </main>
+
+        <footer class="footer bg-dark">
+            <i class="fab fa-facebook fa-2x"></i>facebook
+            <i class="fab fa-instagram fa-2x"></i>facebook
+            <i class="fab fa-twitter fa-2x"></i>facebook
+            <i class="fab fa-youtube fa-2x"></i>facebook
+            <p>Copyrigth &copy; 2020 - Makima GmbH</p>
+        </footer>
+</body>
+</html>

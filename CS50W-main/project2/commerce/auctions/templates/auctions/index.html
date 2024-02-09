@@ -1,0 +1,47 @@
+{% extends "auctions/layout.html" %}
+
+{% load static %}
+
+{% block body %}
+    {% csrf_token %}
+    {% if user.is_authenticated %}
+    <header>
+        <div id="navbar" class="navbar">
+            <h1 class="logo">
+                <span class="text-primary"><i class="fas fa-book-open"></i> Tonis </span>
+                Shop
+            </h1>
+            <div class="categories">
+                <li><a onclick="categories()" class="navbtn" name="categories" id="categories" href="{% url 'categories' %}">Categories</a></li>
+                <nav>
+                    <ul>
+                        <button class="btn navbtn" onclick="renderIndex()" id="index">Index</button>
+                        <button class="btn navbtn" onclick="casual()" id="casual">Casual</button>
+                        <button class="btn navbtn" onclick="buisness()" id="buisness">Buisness</button>
+                        <button class="btn navbtn" onclick="designer()" id="designer">Designer</button>
+                    </ul>
+                </nav>
+            </div>
+            <li><a onclick="watchlist()"class="navbtn" name="watchlist" id="watchlist" href="{% url 'watchlist' %}">Watchlist</a></li>
+        </div>
+    </header>
+
+    <div id="view">
+        {% csrf_token %}
+    </div>
+
+    <hr>
+    <div class="info">
+        <h3>What Are we ?</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur temporibus iusto quidem modi ipsa ea!</p>
+    </div>
+
+
+    {% else %}
+    <div class="check"></div>
+    {% endif %}
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'auctions/app.jsx' %}"></script>
+{% endblock %}

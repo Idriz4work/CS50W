@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=#, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/utilitys.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+      integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ="
+      crossorigin="anonymous"
+    />
+    <script src="/app.js">
+    const navbar = document.querySelector('#navbar');
+        const scrooled = false;
+        window.onscroll = function() {
+            if(window.pageYOffset > 100){
+                navbar.classList.remove('top');
+                if(!scrooled){
+                    navbar.style.transform = 'translateY(-70px)';
+                }
+                setTimeout(() => {
+                    navbar.style.transform = 'translateY(0)';
+                    scrooled = true;
+                }, 200);
+            }
+            else{
+                navbar.classList.add('top');
+                scrooled = false;
+            }
+        }</script>
+</head>
+<body>
+    <header class="hero blog">
+        <div id="nav" class="navbar">
+            <h1 class="logo">
+            <span href="/index.html" class="text-primary"><i class="fas fa-book-open"></i>Makima</span> GmbH
+            </h1>
+            <nav>
+                <ul>
+                    <li><a href="/index.html">What is Makima GmbH</a></li>
+                    <li><a href="/work.html">Our Work</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <div class="content">
+            <h1>About</h1>
+        </div>
+    </header>
+
+    <main>
+        <article class="flex-columns">
+            <div class="row">
+                <div class="column">
+                    <div class="column1">
+                        <img src="https://th.bing.com/th/id/R.69da8eb357881db488ea4a509c4ebbc6?rik=soxlcUCcPYaCbg&pid=ImgRaw&r=0" alt="">
+                    </div>
+                </div>
+                    <div class="column2 bg-dark">
+                        <h4>We are working in Japan</h4>
+                        <h2>Hokkaido Factory</h2>
+                        <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis unde 
+                        repudiandae iusto animi, sapiente aliquam accusamus
+                        </p>
+                        <a href="/work.html" class="btn btn-outline">
+                            <i class="fas fa-chevron"></i>Read More</a>
+                    </div>
+                </div>
+        </article>
+        <hr>
+        <article class="flex-columns">
+            <div class="row">
+                <div class="column">
+                    <div class="column1">
+                        <img src="https://th.bing.com/th/id/R.69da8eb357881db488ea4a509c4ebbc6?rik=soxlcUCcPYaCbg&pid=ImgRaw&r=0" alt="">
+                    </div>
+                </div>
+                    <div class="column2 bg-light">
+                        <h4>We are working in Japan</h4>
+                        <h2>Hokkaido Factory</h2>
+                        <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis unde 
+                        repudiandae iusto animi, sapiente aliquam accusamus
+                        </p>
+                        <a href="/work.html" class="btn-darks">
+                            <i class="fas fa-chevron"></i>Read More</a>
+                    </div>
+                </div>
+        </article>
+    </main>
+
+    <hr>
+
+        <footer class="footer bg-dark">
+            <i class="fab fa-facebook fa-2x"></i>facebook
+            <i class="fab fa-instagram fa-2x"></i>facebook
+            <i class="fab fa-twitter fa-2x"></i>facebook
+            <i class="fab fa-youtube fa-2x"></i>facebook
+            <p>Copyrigth &copy; 2020 - Makima GmbH</p>
+        </footer>
+</body>
+</html>
