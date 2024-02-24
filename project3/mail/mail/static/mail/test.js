@@ -1,71 +1,56 @@
-
-// access value
-fetch('/emails/inbox')
-.then(response => response.json())
-.then(emails => {
-    // Print emails
-    console.log(emails);
-
-    // ... do something else with emails ...
-});
-
-//get emails
-fetch('/emails/100')
-.then(response => response.json())
-.then(email => {
-    // Print email
-    console.log(email);
-
-    // ... do something else with email ...
-});
-
-// post emails
-fetch('/emails', {
-  method: 'POST',
-  body: JSON.stringify({
-      recipients: 'baz@example.com',
-      subject: 'Meeting time',
-      body: 'How about we meet tomorrow at 3pm?'
-  })
-})
-.then(response => response.json())
-.then(result => {
-    // Print result
-    console.log(result);
-});
-
-// put vhange atribute from archieved to true
-fetch('/emails/100', {
-  method: 'PUT',
-  body: JSON.stringify({
-      archived: true
-  })
-})
-
- // Log the form data
- console.log("Recipient:", recipient);
- console.log("Subject:", subject);
- console.log("Body:", body);
-
- // Add your fetch code here to send the data to the server if needed
- fetch('/emails', {
-   method: 'POST',
-   headers: {
-     'Content-Type': 'application/json',
-   },
-   body: JSON.stringify({
-     recipients: recipient,
-     subject: subject,
-     body: body,
-   }),
- })
-   .then(response => response.json())
-   .then(result => {
-     // Handle the response if needed
-     console.log(result);
-   });
-
-   
-   const recipient = document.getElementById("compose-recipients").value;
-   const subject = document.getElementById("compose-subject").value;
-   const body = document.getElementById("compose-body").value;
+function renderEmails() {
+    // Fetch emails from the API
+    fetch(`/emails/inbox`)
+      .then(response => response.json())
+      .then(emails => {
+        // Display all emails
+        const mails = document.querySelector("#emails-view");
+  
+        const local = localStorage.getItem('stored');
+        const savedEmails = JSON.parse(local);
+  
+        // Clear the innerHTML before adding new content
+        mails.innerHTML = '';
+  
+        // Loop through the saved emails
+        savedEmails.forEach(saved => {
+          const recipients = saved.recipient;
+          const subject = saved.subject;
+          const body = saved.body;
+          const timestamp = saved.timestamp;
+          const sender = saved.sender;
+          const email_id = uuidv4();
+          const sent_status = saved.status;
+  
+          // Create HTML elements for each email and append them to the container
+          mails.innerHTML += `
+            <div class="email-container">
+              <div class="email-header">
+                <a class="heading-email">${recipients} ${subject}</a>
+                <a class="time">${timestamp}</a>
+                <button class="show">Show</button>
+              </div>
+            </div>`;
+        });
+  
+        // Now only get the emails where the sender has the same name (e.g., drzatilla@gmail.com)
+        const filteredEmails = savedEmails.filter(email => email.sender === sender);
+  
+        // Create HTML elements for each filtered email and append them to the container
+        filteredEmails.forEach(filteredEmail => {
+          const recipients = filteredEmail.recipient;
+          const subject = filteredEmail.subject;
+          const timestamp = filteredEmail.timestamp;
+  
+          mails.innerHTML += `
+            <div class="email-container">
+              <h1>Inbox</h1>
+              <div class="email-header">
+                <a class="heading-email">${recipients} ${subject}</a>
+                <a class="time">${timestamp}</a>
+                <button class="show">Show</button>
+              </div>
+            </div>`;
+        });
+      });
+  }

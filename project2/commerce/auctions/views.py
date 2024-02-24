@@ -6,6 +6,14 @@ from django.urls import reverse
 
 from .models import User
 
+import json
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.db import IntegrityError
+from django.http import JsonResponse
+from django.shortcuts import HttpResponse, HttpResponseRedirect, render
+from django.views.decorators.csrf import csrf_exempt
+
 
 def index(request):
     return render(request, "auctions/index.html")
@@ -35,7 +43,6 @@ def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse("index"))
 
-
 def register(request):
     if request.method == "POST":
         username = request.POST["username"]
@@ -61,3 +68,57 @@ def register(request):
         return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "auctions/register.html")
+
+
+def categories(request):
+    if request.method == "GET":
+        return render(request, "auctions/categories.html")
+
+    # Everyone else is prompted to sign in
+    else:
+        return HttpResponseRedirect(reverse("login"))
+        
+
+def designer(request):
+    if request.method == "GET":
+        # Assuming you have a session variable to track the category click status
+        return render(request, "auctions/categories.html")
+    
+    else:
+        return JsonResponse({'message': 'Designer category not clicked'}, status=403)
+
+        
+
+@login_required
+def casual(request):
+    if request.method == "GET":
+        return render(request, "auctions/index.html")
+
+
+@login_required
+def buisness(request):
+    if request.method == "GET":
+        return render(request, "auctions/index.html")
+
+
+@login_required
+def watchlist(request):
+    if request.method == "GET":
+        return render(request, 'auctions/index.html')
+        
+    # Everyone else is prompted to sign in
+    else:
+        return HttpResponseRedirect(reverse("login"))
+    
+def listing(request):
+    if request.method == "GET":
+        return render(request,'auctions/listing' )
+    
+def bid_owner(request):
+    if request.method == "GET":
+        return render(request, 'auctions/bider')
+    
+def bid_comment(request):
+    if request.method == "GET":
+        return render(request, "auctions/bider")
+    

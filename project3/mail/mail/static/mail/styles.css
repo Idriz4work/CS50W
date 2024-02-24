@@ -1,17 +1,263 @@
-textarea {
-    min-height: 400px;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-#navbar button{
-    background-color: rgb(123, 180, 201);
-    color: rgb(0, 0, 0);
-    border: 1px black solid;
-    margin: 5px;
-    padding: 5px;
+#username {
+    align-items: center;
+    text-align: center;
+    height: 50px;
+    background-color: crimson;
+    color: #222;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    transition-property: background, border;
+    transition-duration: 1s; /* Adjust the duration to your preference */
+    transition-delay: 0.5s; /* Adjust the delay to your preference */
+    transition-timing-function: ease-in-out;
+    margin-top: 2.5px;
+    border-radius: 4px;
 }
 
-#navbar button:hover {
-    background-color: red;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border: 0 ridge;
+#username:hover {
+    color: rgb(0, 24, 97);
+    background-color: #ede0e0;
+    border-bottom: skyblue 50px solid;
+}
+
+
+#emails-view{
+    background: #555;
+    color: aliceblue;
+    height: 40vh;
+    display: flex;
+    flex: 1;
+}
+
+#emails-view h1{
+    background-color: #555;
+    color: #222;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    transition-property: background;
+    transition-duration: 2s;
+    transition-timing-function: ease-in-out;
+}
+#emails-view h4 {
+    color: #222;
+    background-color: sienna;
+    transition-property: background;
+    transition-delay: 1s ;
+    transition-duration: 3s;
+    transition-timing-function: ease-in-out;
+    width: 300px;
+    height: 50px;
+    text-align: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+#emails-view h4:hover {
+    border-bottom: rgb(106, 51, 0) 2px solid;
+    color: #222;
+    background-color: #555;
+}
+
+#emails-view h4:hover{
+    background-color: #ffffff;
+    color: #222;
+    
+}
+
+#emails-view h1:hover{
+    background-color: thistle;
+    color: #333;
+}
+
+p{
+    color: #333;
+    background-color: aliceblue;
+}
+
+#compose-view {
+    margin-top: 35px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#compose-view  #compose-form{
+    background-color: white;
+    color: #333;
+    margin-top: 35px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#compose-form #m-sub{
+    color: #333;
+    font-weight: 500;
+    background-color: tomato;
+    transition: background 2s ease-in-out;
+    margin-top: 20px;
+}
+
+#compose-form #m-sub:hover{
+    background-color: darkgreen;
+    color: #777;
+    border-bottom: crimson;
+}
+
+#emails-view{
+    background-color: white;
+    color: #333;
+    margin-top: 35px;
+    position: relative;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    flex: 1;
+}
+
+.main-footer {
+    background: url(https://th.bing.com/th/id/R.863e99da41e1c41731d160db725a4f14?rik=pZvKLeXqzBdH8A&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2f4%2f7%2f4%2f1092967-large-nature-background-hd-1920x1200-ipad-retina.jpg&ehk=auNumwxY5d%2br4AvO1n4FUZzXF4dArJyYZqr50U9h%2b9M%3d&risl=&pid=ImgRaw&r=0) no-repeat center center/cover;
+    opacity: 0.5;
+    border: #222 3px solid;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.container {
+    padding-bottom: 70px; 
+}
+
+
+.main-footer i {
+    padding: 0 9px;
+    margin: 10px;
+    align-items: center;
+}
+
+.main-footer a {
+    text-decoration: none;
+    color: orange;
+}
+.con p {
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    color: #222;
+    margin: 10px 0;
+    font-weight: 500;
+    background-color: rgb(167, 86, 5);
+    opacity: 0.5;
+    position: relative;
+}
+
+
+.con::before{
+    content: "";
+    position: absolute;
+    top: 0 left 0;
+}
+
+.con *{
+    z-index: 10;
+}
+
+
+.email-container{
+    padding: 0 9px;
+    margin: 10px 0;
+}
+
+.email-container .email-header{
+    background-color: #555;
+    color: azure;
+    border: #222 solid 2px;
+    transition-property: background;
+    transition-duration: 3s;
+    transition-timing-function: ease-in-out;
+    justify-content: space-between;
+    display: flex;
+}
+.email-header:hover{
+    background-color: aliceblue;
+    color: crimson;
+}
+
+.email-container .email-header .heading-email{
+    text-align: center;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+
+.email-header .time{
+    justify-content: space-between;
+    align-items: end;
+    text-align: end;
+}
+
+.email-header .show{
+    transition: background 2s ease-in-out;
+    background-color: cornsilk;
+    color: #222;
+}
+
+.email-header .show:hover{
+    background-color: darkgreen;
+    color: #ede0e0;
+    border-bottom: crimson solid 2px;
+}
+
+.email-body{
+    background-color: #777;
+    color: #222;
+}
+.email-body #m-sub{
+    background-color: blanchedalmond;
+    color: #222;
+    transition: background 2s ease-in-out ;
+}
+
+.email-body #m-sub:hover{
+    background-color: green;
+    color: crimson;
+    border-bottom: crimson 2px solid;
+}
+
+.show{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+    text-align: center;
+    border: #333 solid 2px;
+}
+h1#load{
+    transition-property: background, border;
+    /* transition-duration: 1s;  Adjust the duration to your preference */
+    transition-delay: 0.5s; /* Adjust the delay to your preference */
+    transition-timing-function: ease-in-out;
+}
+h1#load:hover{
+    background-color: #777;
+    color: #222;
+    /* border-bottom: darkgreen 50px solid; */
 }

@@ -1,16 +1,11 @@
-from django.core.files.base import ContentFile
-from django.core.files.storage import default_storage
-from django.forms import ChoiceField
+
 from django.shortcuts import render, redirect
 from numpy import save
 from .util import list_entries, save_entry, get_entry
-from django.db import connection
-from django.http import HttpResponse
 from . import util
-from django.contrib.auth.decorators import login_required
-import random
-from django.urls import reverse
-from .models import saved_pages  # Import your model
+from .models import saved_pages  # Import the model used for saving pages
+from .util import list_entries, get_entry, save_entry  # Import necessary utility functions
+import random # Import your model
 
 def index(request):
     return render(request, "encyclopedia/index.html", {
