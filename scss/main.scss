@@ -251,3 +251,131 @@ body {
         color: #222;
     }
 }
+
+
+// UTILITIES
+img {
+    width: 100%;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    color: crimson;
+    opacity: 0.8;
+    height: 10vh;
+    width: 88%;
+    position: fixed;
+    top: 0;
+    padding: 0 15px;
+    transition: 0.7s;
+    margin: 0 auto; /* Centering the navbar horizontally */
+
+    .btn {
+        color: aliceblue;
+        background-color: #111;
+        padding: 9px;
+        margin: 0 5px;
+        width: 100px;
+        height: 45px;
+        transition: background 1.5s ease-in-out;
+        font-weight: 600;
+
+        &:hover {
+            border-bottom: rgb(67, 11, 11) 2px solid;
+            background-color: crimson;
+            color: #999;
+            opacity: 0.8;
+            size: 1rem;
+        }
+    }
+
+    a.btn {
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+/* HEADER */
+.hero {
+    background: url(https://th.bing.com/th/id/R.ba27123edd8f62893022c724d870c2b0?rik=1HSh2C3rOiSrqw&pid=ImgRaw&r=0) no-repeat center center/cover;
+    height: 100vh;
+    position: relative;
+    color: azure;
+
+    &.blog {
+        background: url(https://th.bing.com/th/id/R.c2517b46150bc3d1230b92503e67e468?rik=5G8UsW0zAKzfiA&pid=ImgRaw&r=0) no-repeat center center/cover;
+        height: 50vh;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 100%;
+        padding: 0 20px;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6); /* You can create a overlay with this last part = 0.6 is opacity to make it good */
+    }
+
+    * {
+        z-index: 10;
+    }
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.mar {
+    margin-bottom: 50px;
+    width: 100%;
+    height: 100%;
+}
+
+.heading-email.read {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: #222 solid 2px;
+    justify-content: space-between;
+    display: flex;
+}
+
+.navbar .dropdown {
+    position: relative;
+    display: inline-block;
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            text-align: left;
+            border: none;
+            background-color: inherit;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #ddd;
+            }
+        }
+    }
+}

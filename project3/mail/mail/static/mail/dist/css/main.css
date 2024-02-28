@@ -1,0 +1,286 @@
+@font-face {
+  font-family: 'Kode Mono';
+  src: url("/fonts/KodeMono-VariableFont_wght.ttf") "truetype"; }
+
+@font-face {
+  font-family: 'Figtree';
+  src: url("/fonts/Figtree-VariableFont_wght.ttf") "truetype"; }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+#username {
+  align-items: center;
+  text-align: center;
+  height: 50px;
+  background-color: crimson;
+  color: #222;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  transition: background 1s ease-in-out, border 1s ease-in-out;
+  margin-top: 2.5px;
+  border-radius: 4px; }
+  #username:hover {
+    color: #001861;
+    background-color: #ede0e0;
+    border-bottom: skyblue 50px solid; }
+
+#emails-view {
+  background: #555;
+  color: aliceblue;
+  height: 40vh;
+  display: flex;
+  flex: 1; }
+  #emails-view h1 {
+    background-color: #555;
+    color: #222;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    transition: background 2s ease-in-out; }
+  #emails-view h4 {
+    color: #222;
+    background-color: sienna;
+    transition: background 2s ease-in-out 1s;
+    width: 300px;
+    height: 50px;
+    text-align: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    margin-top: 10px; }
+    #emails-view h4:hover {
+      border-bottom: #6a3300 2px solid;
+      color: #222;
+      background-color: #555; }
+    #emails-view h4:hover {
+      background-color: #ffffff;
+      color: #222; }
+  #emails-view h1:hover {
+    background-color: thistle;
+    color: #333; }
+
+p {
+  color: #333;
+  background-color: aliceblue; }
+
+#compose-view {
+  margin-top: 35px;
+  text-align: center;
+  display: flex;
+  flex-direction: column; }
+  #compose-view #compose-form {
+    background-color: white;
+    color: #333;
+    margin-top: 35px;
+    text-align: center;
+    display: flex;
+    flex-direction: column; }
+    #compose-view #compose-form #m-sub {
+      color: #333;
+      font-weight: 500;
+      background-color: tomato;
+      transition: background 2s ease-in-out;
+      margin-top: 20px; }
+      #compose-view #compose-form #m-sub:hover {
+        background-color: darkgreen;
+        color: #777;
+        border-bottom: crimson; }
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0; }
+
+.container {
+  flex: 1;
+  padding-bottom: 70px; }
+
+.main-footer {
+  background: url(https://th.bing.com/th/id/R.863e99da41e1c41731d160db725a4f14?rik=pZvKLeXqzBdH8A&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2f4%2f7%2f4%2f1092967-large-nature-background-hd-1920x1200-ipad-retina.jpg&ehk=auNumwxY5d%2br4AvO1n4FUZzXF4dArJyYZqr50U9h%2b9M%3d&risl=&pid=ImgRaw&r=0) no-repeat center center/cover;
+  opacity: 0.5;
+  border: #222 3px solid;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  width: 100%;
+  bottom: 0;
+  position: absolute;
+  z-index: -1; }
+  .main-footer i {
+    padding: 0 9px;
+    margin: 10px;
+    align-items: center; }
+  .main-footer a {
+    text-decoration: none;
+    color: orange; }
+  .main-footer .con p {
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    color: #222;
+    margin: 10px 0;
+    font-weight: 500;
+    background-color: #a75605;
+    opacity: 0.5;
+    position: relative; }
+    .main-footer .con p::before {
+      content: "";
+      position: absolute;
+      top: 0 left 0; }
+    .main-footer .con p * {
+      z-index: 10; }
+  .main-footer .email-container {
+    padding: 0 9px;
+    margin: 10px 0; }
+    .main-footer .email-container .email-header {
+      background-color: #555;
+      color: azure;
+      border: #222 solid 2px;
+      transition: background 3s ease-in-out;
+      justify-content: space-between;
+      display: flex; }
+      .main-footer .email-container .email-header:hover {
+        background-color: aliceblue;
+        color: crimson; }
+      .main-footer .email-container .email-header .heading-email {
+        text-align: center;
+        justify-content: space-between;
+        align-items: flex-start; }
+      .main-footer .email-container .email-header .time {
+        justify-content: space-between;
+        align-items: end;
+        text-align: end; }
+      .main-footer .email-container .email-header .show {
+        transition: background 2s ease-in-out;
+        background-color: cornsilk;
+        color: #222; }
+        .main-footer .email-container .email-header .show:hover {
+          background-color: darkgreen;
+          color: #ede0e0;
+          border-bottom: crimson solid 2px; }
+    .main-footer .email-container .email-body {
+      background-color: #777;
+      color: #222; }
+      .main-footer .email-container .email-body #m-sub {
+        background-color: blanchedalmond;
+        color: #222;
+        transition: background 2s ease-in-out; }
+        .main-footer .email-container .email-body #m-sub:hover {
+          background-color: green;
+          color: crimson;
+          border-bottom: crimson 2px solid; }
+    .main-footer .email-container .show {
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      font-size: large;
+      text-align: center;
+      border: #333 solid 2px; }
+  .main-footer h1#load {
+    transition: background 1s ease-in-out, border 1s ease-in-out; }
+  .main-footer h1#load:hover {
+    background-color: #777;
+    color: #222; }
+
+img {
+  width: 100%; }
+
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: #333;
+  color: crimson;
+  opacity: 0.8;
+  height: 10vh;
+  width: 88%;
+  position: fixed;
+  top: 0;
+  padding: 0 15px;
+  transition: 0.7s;
+  margin: 0 auto;
+  /* Centering the navbar horizontally */ }
+  .navbar .btn {
+    color: aliceblue;
+    background-color: #111;
+    padding: 9px;
+    margin: 0 5px;
+    width: 100px;
+    height: 45px;
+    transition: background 1.5s ease-in-out;
+    font-weight: 600; }
+    .navbar .btn:hover {
+      border-bottom: #430b0b 2px solid;
+      background-color: crimson;
+      color: #999;
+      opacity: 0.8;
+      size: 1rem; }
+  .navbar a.btn {
+    justify-content: center;
+    text-align: center; }
+
+/* HEADER */
+.hero {
+  background: url(https://th.bing.com/th/id/R.ba27123edd8f62893022c724d870c2b0?rik=1HSh2C3rOiSrqw&pid=ImgRaw&r=0) no-repeat center center/cover;
+  height: 100vh;
+  position: relative;
+  color: azure; }
+  .hero.blog {
+    background: url(https://th.bing.com/th/id/R.c2517b46150bc3d1230b92503e67e468?rik=5G8UsW0zAKzfiA&pid=ImgRaw&r=0) no-repeat center center/cover;
+    height: 50vh; }
+  .hero .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    padding: 0 20px; }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    /* You can create a overlay with this last part = 0.6 is opacity to make it good */ }
+  .hero * {
+    z-index: 10; }
+
+.container {
+  margin-top: 50px; }
+
+.mar {
+  margin-bottom: 50px;
+  width: 100%;
+  height: 100%; }
+
+.heading-email.read {
+  background-color: #ffffff;
+  color: black;
+  border: #222 solid 2px;
+  justify-content: space-between;
+  display: flex; }
+
+.navbar .dropdown {
+  position: relative;
+  display: inline-block; }
+  .navbar .dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1; }
+    .navbar .dropdown .dropdown-content button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      text-align: left;
+      border: none;
+      background-color: inherit;
+      cursor: pointer; }
+      .navbar .dropdown .dropdown-content button:hover {
+        background-color: #ddd; }
