@@ -1,7 +1,8 @@
 # CS50W
 
-
-CS50W is a web development course from Harvard University. Here's a brief overview of the weeks:
+CS50W is a web development course from Harvard University. 
+I learned all the fundamental things for fullstack web development. 
+Here's a brief overview of the weeks:
 
 ## Week 1: HTML, CSS:
 Basics of web development, HTML for content, CSS for styling.
